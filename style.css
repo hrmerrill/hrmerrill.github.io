@@ -2,6 +2,24 @@ body {
     text-align: justify;
     background-color: white;
     font-family: 'Roboto';
+    font-size: 20px;
+    padding: 16px;
+}
+
+h2 strong {
+    display: block;
+    font-size: 75%;
+    opacity: 0.75;
+}
+
+@media (max-width: 600px)  {
+    body {
+        text-align: justify;
+        background-color: white;
+        font-family: 'Roboto';
+        font-size: 16px;
+        padding: 16px;
+    }
 }
 
 div {
