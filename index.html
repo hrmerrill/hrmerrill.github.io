@@ -1,14 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <head>
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h1>Welcome</h1>
+  </head>
+  <body>
+    <h1><center>Welcome</center></h1>
     <p> This is a <strong>test</strong>.</p>
-</body>
+    <div id="image-section">
+      <canvas id="myChart"></canvas>
+      <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Function to calculate normal distribution probability density
+        function normalDistribution(x, mean, stdDev) {
+          const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stdDev, 2));
+          const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
+          return coefficient * Math.exp(exponent);
+        }
+
+        const AeTmean = 130;
+        const AeTstdDev = 5;
+        const AeTprior = [];
+
+        const LTmean = 168;
+        const LTstdDev = 5;
+        const LTprior = [];
+
+        const Maxmean = 189; 
+        const MaxstdDev = 2;
+        const Maxprior = [];
+
+        const labels = [];
+
+        // Generate data points for the chart
+        const startX = 90;
+        const endX = 210;
+        const step = 1; // Adjust for smoother or coarser curve
+
+        for (let x = startX; x <= endX; x += step) {
+            const y = normalDistribution(x, AeTmean, AeTstdDev);
+            AeTprior.push(y);
+            labels.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
+        }
+
+        for (let x = startX; x <= endX; x += step) {
+            const y = normalDistribution(x, Maxmean, MaxstdDev);
+            const z = normalDistribution(x, LTmean, LTstdDev);
+            Maxprior.push(y);
+            LTprior.push(z);
+        }
+
+
+        const myChart = new Chart(ctx, {
+            type: 'line', // Use a line chart for smooth curve
+            data: {
+                labels: labels, // X-axis values
+                datasets: [
+                  {
+                    label: 'AeT current estimate',
+                    data: AeTprior, // Y-axis values (probabilities)
+                    borderColor: 'blue',
+                    backgroundColor: '#0000FF99',
+                    borderWidth: 1,
+                    fill: true, // fill the area under the curve
+                    tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+                },
+                  {
+                    label: 'LT current estimate',
+                    data: LTprior, // Y-axis values (probabilities)
+                    borderColor: 'green',
+                    backgroundColor: '#00FF0099',
+                    borderWidth: 1,
+                    fill: true, // fill the area under the curve
+                    tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+                },
+                  {
+                    label: 'Max current estimate',
+                    data: Maxprior, // Y-axis values (probabilities)
+                    borderColor: 'yellow',
+                    backgroundColor: '#FFFF0099',
+                    borderWidth: 1,
+                    fill: true, // fill the area under the curve
+                    tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+                }
+              ]
+            },
+            options: {
+              elements: {
+                point:{
+                  radius: 0
+                }
+              },
+              responsive: true,
+              scales: {
+                x: {
+                  title: {
+                      display: true,
+                      text: 'Heart rate'
+                    },
+                  grid: {
+                      display: false
+                  },
+                  ticks: {
+                    callback: function(val, index) {
+                      // Show every 5th tick label
+                      return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                    },
+                    maxRotation: 0,
+                    minRotation: 0,
+                    precision: 0
+                  }
+                },
+                  y: {
+                    title: {
+                      display: false,
+                      text: 'Probability Density'
+                    },
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                      callback: function(val, index) {
+                        // No y-axis ticks
+                        return "";
+                      }
+                    },
+                    beginAtZero: false // Important for normal distributions
+                  }
+              }
+            }
+        });
+      </script>
+    </div>
+  </body>
 </html>
