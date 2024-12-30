@@ -31,11 +31,11 @@
         const AeTprior = [];
 
         const LTmean = 168;
-        const LTstdDev = 5;
+        const LTstdDev = 4;
         const LTprior = [];
 
         const Maxmean = 189; 
-        const MaxstdDev = 2;
+        const MaxstdDev = 3;
         const Maxprior = [];
 
         const labels = [];
@@ -106,15 +106,13 @@
                 title: {
                   display: true,
                   text: 'Heart rate (bpm)'
-                  },
+                },
+                type: "linear",
                 grid: {
-                    display: false
+                    display: true
                 },
                 ticks: {
-                  callback: function(val, index) {
-                    // Show every 5th tick label
-                    return index % 5 === 0 ? this.getLabelForValue(val) : '';
-                  },
+                  stepSize: 10,
                   maxRotation: 0,
                   minRotation: 0,
                   precision: 0
@@ -131,11 +129,10 @@
                   },
                   ticks: {
                     callback: function(val, index) {
-                      // No y-axis ticks
-                      return "";
+                      return ""; // No y-axis ticks
                     }
                   },
-                  beginAtZero: false // Important for normal distributions
+                  beginAtZero: false
                 }
             }
           }
