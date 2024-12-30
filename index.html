@@ -14,6 +14,7 @@
       <strong>Bayesian Assessment of Metabolic Markers</strong>
       BAMM
     </h2>
+    <p>I received <a href="https://uphillathlete.com/product/training-for-the-uphill-athlete-book/">Training for the Uphill Athlete</a> as a gift and found myself particularly interested in estimating my aerobic and lactate thresholds (AeT and LT, respectively). This site is probably best thought of as a journal or lab notebook where I can document my measurements and thought process, and more generally, as an outlet in which I can exercise my compulsion to do data science.</p>
     <div id="image-section" style="position: relative">
       <canvas id="myChart"></canvas>
       <script>
@@ -26,8 +27,8 @@
           return coefficient * Math.exp(exponent);
         }
 
-        const AeTmean = 130;
-        const AeTstdDev = 5;
+        const AeTmean = 139;
+        const AeTstdDev = 3.52;
         const AeTprior = [];
 
         const LTmean = 168;
@@ -118,22 +119,22 @@
                   precision: 0
                 }
               },
-                y: {
+              y: {
+                display: false,
+                title: {
                   display: false,
-                  title: {
-                    display: false,
-                    text: 'Probability Density'
-                  },
-                  grid: {
-                    display: false
-                  },
-                  ticks: {
-                    callback: function(val, index) {
-                      return ""; // No y-axis ticks
-                    }
-                  },
-                  beginAtZero: false
-                }
+                  text: 'Probability Density'
+                },
+                grid: {
+                  display: false
+                },
+                ticks: {
+                  callback: function(val, index) {
+                    return ""; // No y-axis ticks
+                  }
+                },
+                beginAtZero: false
+              }
             }
           }
         });

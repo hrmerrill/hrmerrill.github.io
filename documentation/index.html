@@ -12,10 +12,193 @@
   <body>
     <h2>
       <strong>BAMM Documentation</strong>
-      More details than you want.
+      Establishing prior distributions and first measurements.
     </h2>
-    <p>I received <a href="https://uphillathlete.com/product/training-for-the-uphill-athlete-book/">Training for the Uphill Athlete</a> as a gift and found myself particularly interested in estimating my aerobic and lactate thresholds (AeT and LT, respectively). This page is probably best thought of as a journal or lab notebook where I can document my measurements and thought process, and more generally, as an outlet in which I can exercise my compulsion to do data science.</p>
-    <p>To obtain estimates of each metabolic marker, I'm mostly following the methods outlined in the book and described <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment/>here</a>. I'm also using Bayesian methods to quantify the uncertainty around these estimates, because estimates without some quantification of their uncertainty are, in my opinion, useless.</p>
+    <p>To obtain estimates of each metabolic marker, I'm mostly following the methods outlined in the book and described <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment/>here</a>. I'm also using Bayesian methods to quantify the uncertainty around these estimates, because estimates of these markers without some quantification of their uncertainty are useless to me.</p>
     <h3>AeT</h3>
+    <p>The aerobic threshold (AeT) is</p>
+    <blockquote>"The uppermost intensity of exercise where the production of ATP begins to be dominated by glycolysis rather than by the oxidation of fats. At this point blood lactate begins to rise above the resting level." -<em>Training for the Uphill Athlete</em></blockquote>
+    <p>This threshold is arguably the most important to estimate, as I am severely undertrained for endurance and I need to keep almost all of my training at or below the AeT.</p>
+    <p>To establish a prior estimate of my AeT, I will use the maximum aerobic function (MAF) formula: 180 minus my age, with some modifiers. The most appropriate modifier is to subtract an additional five because I have not been training regularly, which would put the point estimate of my AeT at 140. However, rarely have I ever trained for endurance in my entire life, and until recently I struggled to finish even a mile run at any pace, so I put the chances of my AeT being at or above 140 at about 5%. A normal distribution with mean 130 bpm and standard deviation of 5 bpm describes this estimate nicely:</p>
+    <canvas id="aetChart"></canvas>
+    <div id="image-section" style="position: relative">
+      <script>
+        const ctx = document.getElementById('aetChart').getContext('2d');
+
+        // Function to calculate normal distribution probability density
+        function normalDistribution(x, mean, stdDev) {
+          const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stdDev, 2));
+          const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
+          return coefficient * Math.exp(exponent);
+        }
+
+        const AeTmean = 130;
+        const AeTstdDev = 5;
+        const AeTprior = [];
+        const labels = [];
+
+        // Generate data points for the chart
+        const startX = 90;
+        const endX = 210;
+        const step = 1; // Adjust for smoother or coarser curve
+
+        for (let x = startX; x <= endX; x += step) {
+          const y = normalDistribution(x, AeTmean, AeTstdDev);
+          AeTprior.push(y);
+          labels.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
+        }
+
+        Chart.defaults.font.family = "Roboto";
+        const aetChart = new Chart(ctx, {
+          type: 'line', // Use a line chart for smooth curve
+          data: {
+            labels: labels, // X-axis values
+            datasets: [
+              {
+                label: 'AeT Prior',
+                data: AeTprior, // Y-axis values (probabilities)
+                borderColor: '#00000000',
+                backgroundColor: '#87CEEB99',
+                borderWidth: 1,
+                fill: true, // fill the area under the curve
+                tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            elements: {
+              point:{
+                radius: 0
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Heart rate (bpm)'
+                },
+                type: "linear",
+                grid: {
+                    display: true
+                },
+                ticks: {
+                  stepSize: 10,
+                  maxRotation: 0,
+                  minRotation: 0,
+                  precision: 0
+                }
+              },
+              y: {
+                display: false
+              }
+            }
+          }
+        });
+      </script>
+    </div>
+    <p>This is a conservative estimate, and exercising with my heart rate at 120 bpm would have a 95% chance of being below my true, unknown AeT.</p>
+    <h4>Increasing the precision of the AeT estimate</h4>
+    <p>While I now have a conservative estimate for my AeT and a conservative exercise program to follow, the uncertainty of my prior distribution is large, and I may be losing training volume or intensity by being <em>too</em> conservative. I can therefore collect data to update my prior distribution. The first data point I will collect will use the <em>nose breathing test</em>:</p>
+    <blockquote>"All you need to do is close your mouth during a run and see if you can sustain breathing through your nose for several minutes at a time. Alternatively, see if you can carry on a conversation in medium-length full sentences."</blockquote>
+    <p>To conduct this test, I warmed up with a 10-minute bike ride followed by active stretching, then ran continuously for 30 minutes at the fastest pace at which I felt I could comfortably breath through my nose. For the last five minutes, I also spoke to myself (not unusual for me) to verify that I could still hold a conversation. My average heart rate for this 30-minute run was 148 bpm.</p>
+    <p>To assimilate this data point into my distributional estimate for AeT, we need to do some Bayesian modeling. First, we describe the prior belief about the unknown AeT quantity using our normal distribution:</p>
+    <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,5^2)" height="30px">
+    <p>Next, we describe the likelihood of observing a heart rate using the nose-breathing test (denoted <em>y<sub>NB</sub></em>) given a true but unknown AeT value:</p>
+    <img src="https://latex.codecogs.com/svg.image?&space;y_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{NB}^2)" height="30px">
+    <p>The details are omitted here, but we obtain the distribution of AeT given the observation <em>y<sub>NB</sub></em> with the following formula:</p>
+    <img src="https://latex.codecogs.com/svg.image?\text{AeT}|y_{NB}\sim&space;N\left(\frac{\frac{130}{5^2}&plus;\frac{y_{NB}}{\sigma^2_{NB}}}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}},\frac{1}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}}\right)" height="60px">
+    <p>Plugging in our data point of <em>y<sub>NB</sub></em>=148 bpm along with some conservative estimate for the uncertainty of this measurement (I will use 5 bpm, since I believe that repeating this test multiple times at the same conditioning will not result in an AeT measurement spread of much more than 20 bpm), we get a normal posterior distribution for the AeT with mean of 139 and standard deviation of 3.52:</p>
+    <canvas id="aetChartupdated"></canvas>
+    <div id="image-section" style="position: relative">
+      <script>
+        const ctx2 = document.getElementById('aetChartupdated').getContext('2d');
+
+        // Function to calculate normal distribution probability density
+        function normalDistribution(x, mean, stdDev) {
+          const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stdDev, 2));
+          const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
+          return coefficient * Math.exp(exponent);
+        }
+
+        const AeTmean2 = 139;
+        const AeTstdDev2 = 3.52;
+        const AeTposterior = [];
+        const labels2 = [];
+
+        // Generate data points for the chart
+        const startX2 = 90;
+        const endX2 = 210;
+        const step2 = 1; // Adjust for smoother or coarser curve
+
+        for (let x = startX2; x <= endX2; x += step2) {
+          const y = normalDistribution(x, AeTmean2, AeTstdDev2);
+          AeTposterior.push(y);
+          labels2.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
+        }
+
+        Chart.defaults.font.family = "Roboto";
+        const aetChartupdated = new Chart(ctx2, {
+          type: 'line', // Use a line chart for smooth curve
+          data: {
+            labels: labels2, // X-axis values
+            datasets: [
+              {
+                label: 'AeT Prior',
+                data: AeTprior, // Y-axis values (probabilities)
+                borderColor: '#00000000',
+                backgroundColor: '#87CEEB99',
+                borderWidth: 1,
+                fill: true, // fill the area under the curve
+                tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+              },
+              {
+                label: 'AeT Posterior',
+                data: AeTposterior, // Y-axis values (probabilities)
+                borderColor: '#00000000',
+                backgroundColor: '#0000FF99',
+                borderWidth: 1,
+                fill: true, // fill the area under the curve
+                tension: 0.4 // Adjust curve smoothness (0 for straight lines)
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            elements: {
+              point:{
+                radius: 0
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Heart rate (bpm)'
+                },
+                type: "linear",
+                grid: {
+                    display: true
+                },
+                ticks: {
+                  stepSize: 10,
+                  maxRotation: 0,
+                  minRotation: 0,
+                  precision: 0
+                }
+              },
+              y: {
+                display: false
+              }
+            }
+          }
+        });
+      </script>
+    </div>
+    <p>Notice that collecting a single data point (and even assuming that data point has the same uncertainty as the prior) has not only shifted the distribution, but has also made it more precise (narrower). As more data points are collected, this posterior distribution will continue to narrow (and I can instead estimate the uncertainty of the measurements, rather than assume some value for them).</p>
   </body>
+  <p><a href="../index.html">Home</a></p>
+  <p><a href="">Next</a></p>
 </html>

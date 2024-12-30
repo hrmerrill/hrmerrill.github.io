@@ -14,7 +14,7 @@ h2 strong {
 
 @media (max-width: 600px)  {
     body {
-        text-align: left;
+        text-align: justify;
         background-color: white;
         font-family: 'Roboto';
         font-size: 16px;
