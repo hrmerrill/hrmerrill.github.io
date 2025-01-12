@@ -9,7 +9,7 @@ const datasets = [
       backgroundColor: '#87CEEBFF',
       borderWidth: 1,
       yAxisID: 'y',
-      radius: 5,
+      radius: 3,
   },
   {
       type: 'line',
