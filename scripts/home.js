@@ -7,10 +7,6 @@ function normalDistribution(x, mean, stdDev) {
   return coefficient * Math.exp(exponent);
 }
 
-const AeTmean = 145.33;
-const AeTstdDev = 2.89;
-const AeTprior = [];
-
 const LTmean = 168;
 const LTstdDev = 4;
 const LTprior = [];
@@ -27,16 +23,11 @@ const endX = 210;
 const step = 1; // Adjust for smoother or coarser curve
 
 for (let x = startX; x <= endX; x += step) {
-  const y = normalDistribution(x, AeTmean, AeTstdDev);
-  AeTprior.push(y);
-  labels.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
-}
-
-for (let x = startX; x <= endX; x += step) {
   const y = normalDistribution(x, Maxmean, MaxstdDev);
   const z = normalDistribution(x, LTmean, LTstdDev);
   Maxprior.push(y);
   LTprior.push(z);
+  labels.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
 }
 
 Chart.defaults.font.family = "Roboto";
@@ -47,7 +38,7 @@ const myChart = new Chart(ctx, {
     datasets: [
       {
         label: 'AeT',
-        data: AeTprior, // Y-axis values (probabilities)
+        data: JSON.parse(aet_kde), // Y-axis values (probabilities)
         borderColor: '#00000000',
         backgroundColor: '#0000FF99',
         borderWidth: 1,

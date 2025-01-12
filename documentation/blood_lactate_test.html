@@ -16,8 +16,29 @@
     </h2>  
     <canvas id="lactateChart"></canvas>
     <div id="image-section" style="position: relative">
+      <script src="../data/samples.js"></script>
+      <script src="../data/fitted.js"></script>
       <script src="../scripts/blood_lactate_test.js"></script>
     </div>
+    <p>I have now conducted two tests with my blood lactate analyzer. For full details on the test, see <a href="https://uphillathlete.com/aerobic-training/blood-lactate-testing/">this article</a>, but to quickly summarize, the test is conducted on a treadmill as follows (following a thorough warm-up):</a></p>
+    <ul>
+      <li>Walk or run at a steady pace, maintaining a constant heart rate for three minutes.</li>
+      <li>Take a blood sample and record lactate concentration and heart rate.</li>
+      <li>Slightly increase pace and repeat.</li>
+    </ul>
+    <p>The commonly accepted threshold for AeT is the heart rate at which blood lactate concentrations rise above 2 mmol/L. I need to use the measured data to estimate that threshold with appropriate uncertainty quantification.</p>
+    <h3>Gaussian process modeling</h3>
+    <p>Gaussian process models (GPs) provide a flexible way to model nonlinear trends without forcing the parametric constraints of polynomials. Furthermore, fitted GPs automatically come with the ability to probabilistically sample trends, enabling proper uncertainty quantification. To that end, my modeling strategy is as follows:</p>
+    <ul>
+      <li>Fit a GP to the blood lactate data.</li>
+      <li>Sample a large number of fitted curves over a range of heart rates.</li>
+      <li>For each curve, find the lowest heart rate such that the predicted lactate concentration is over 2 mmol/L.</li>
+      <li>Fit a kernel density estimator (KDE) over these heart rate samples to obtain a distribution for AeT.</li>
+    </ul>
+    <p>The figure at the top of this page shows the results. The data are plotted as sky blue points, the fitted mean curve (bold) and a handful of sampled curves are laid over the points, and the KDE of my AeT is shown in the background as a blue distribution. Notice there is a skewness to the left (so the normal assumptions of the nose-breathing tests previously conducted would not have been appropriate here). My AeT is most likely between 110 and 130 bpm. </p>
+    <h3>Additional notes</h3>
+    <p>I was disappointed to learn that my AeT is significantly lower than what my nose-breathing test indicated. However, I am not surprised, as I have not spent much time training for endurance (and I probably have big straws). If I use 120 as my upper Zone 2 limit, then I won't be running much at all, as I cannot run at a pace slow enough to keep my heart rate that low. It looks like I will be spending most of my time walking or biking.</p>
+    <p>As previously noted, this blood lactate data came from two treadmill tests conducted one week apart. While the analysis is not shown here, if I use data from each test separately to estimate AeT, the estimates are roughly 110 and 130 bpm (with large uncertainty). I suspect the difference is due to differences in sleep, food, random chance etc. and not due to my conditioning significantly improving over a week. However, I do expect my AeT to eventually increase as I continue training, and eventually I will have enough data to incorporate time spent training into the model, so that I can have a running estimate of AeT over time.</p>
   </body>
 <p><a href="../index.html">Home</a></p>
 <p><a href="another_data_point.html">Previous</a></p>
