@@ -1,27 +1,182 @@
+<!-- Adapted from https://www.w3schools.com/w3css/w3css_templates.asp -->
+
 <!DOCTYPE html>
-<html lang="en">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <h2>
-      <strong>Bayesian Assessment of Metabolic Markers</strong>
-      BAMM
-    </h2>
-    <p>I received <a href="https://uphillathlete.com/product/training-for-the-uphill-athlete-book/">Training for the Uphill Athlete</a> as a gift and found myself particularly interested in estimating my aerobic and lactate thresholds (AeT and LT, respectively). This site is probably best thought of as a journal or lab notebook where I can document my measurements and thought process, and more generally, as another outlet in which I can exercise my compulsion to do data science.</p>
-    <div id="image-section" style="position: relative">
-      <canvas id="myChart"></canvas>
-      <script src="data/fitted.js"></script>
-      <script src="scripts/home.js"></script>
+<html>
+<head>
+<title>Hunter R. Merrill</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="resources/headshot.jpeg" style="width:100%" alt="Headshot">
+          <div class="w3-display-bottomright w3-container w3-text-white">
+            <h2>Hunter R. Merrill</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>Principal Data Scientist</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Columbus, OH</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>hmerrill12@gmail.com</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-user fa-fw w3-margin-right w3-text-blue"></i>Bio</b></p>
+          <p>Data scientist with 8+ years experience in predictive modeling and 3+ years experience leading cross-functional teams. Extensive experience with advanced statistical & machine learning methods including Bayesian modeling, deep learning and probabilistic forecasting. Excellent written & oral communication skills. Author of multiple <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ">peer-reviewed publications</a> and <a href="https://patents.google.com/?inventor=Hunter+Merrill">patents</a>.</p>
+          <br>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-blue"></i>Skills</b></p>
+          <p>Statistics, Machine Learning, Predictive Modeling</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:95%">95%</div>
+          </div>
+          <p>Backend Engineering</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:60%">
+              <div class="w3-center w3-text-white">60%</div>
+            </div>
+          </div>
+          <p>Frontend / Web Development</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:25%">25%</div>
+          </div>
+          <br>
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-gear fa-fw w3-margin-right w3-text-blue"></i>Tools</b></p>
+          <p>Python, R, Bash, Git, SQL </p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:95%">95%</div>
+          </div>
+          <p>Javascript, HTML, CSS </p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:50%">50%</div>
+          </div>
+          <p>C++, Matlab </p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-blue" style="width:30%">30%</div>
+          </div>
+          <br>
+
+          <p class="w3-large"><b><i class="fa fa-cogs fa-fw w3-margin-right w3-text-blue"></i>Personal Projects</b></p>
+          <ul>
+            <li><a href="https://github.com/hrmerrill/kaggle-prediction-interval-birthweight?tab=readme-ov-file#prediction-interval-competition-i-birth-weight">Kaggle competition: Birthweight prediction intervals</a></li>
+            <li><a href="bamm/index.html">Training journal: Bayesian metabolic markers</a></li>
+            <li><a href="https://fitnesssignals.com/">Web app: fitnesssignals.com</a></li>
+          </ul>
+          <br>
+
+        </div>
+      </div>
+      <br>
+
+    <!-- End Left Column -->
     </div>
-    <p>Estimates of my aerobic threshold (AeT), lactate threshold (LT), and maximum heart rates.</p>
-    <p>For information about these metabolic markers and how they are useful for endurance training, see <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment/>this article</a>.</p>
-    <p>I intend to update these estimates as I collect more data and as I progress in my endurance training. For a full description of my measurements and methodology, see <a href=documentation/index.html>this page</a>.</p>
-  </body>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-fw w3-margin-right w3-xxlarge w3-text-blue"><svg viewBox="0 0 576 512"><path fill="currentcolor" d="M163.9 136.9c-29.4-29.8-29.4-78.2 0-108s77-29.8 106.4 0l17.7 18 17.7-18c29.4-29.8 77-29.8 106.4 0s29.4 78.2 0 108L310.5 240.1c-6.2 6.3-14.3 9.4-22.5 9.4s-16.3-3.1-22.5-9.4L163.9 136.9zM568.2 336.3c13.1 17.8 9.3 42.8-8.5 55.9L433.1 485.5c-23.4 17.2-51.6 26.5-80.7 26.5L192 512 32 512c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l36.8 0 44.9-36c22.7-18.2 50.9-28 80-28l78.3 0 16 0 64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l120.6 0 119.7-88.2c17.8-13.1 42.8-9.3 55.9 8.5zM193.6 384c0 0 0 0 0 0l-.9 0c.3 0 .6 0 .9 0z"/></svg></i>Service</h2>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>University of Florida Agricultural & Biological Engineering Advisory Board</b></h5>
+                <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2022 - <span class="w3-tag w3-blue w3-round">Current</span></h6>
+                <p>Responsible for advising on the department’s mission statement and strategy, as well as ensuring curricula result in successful placement of graduates.</p>
+            </div>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>USDA NIFA Grant Review Panel</b></h5>
+                <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2023 - Apr 2024</h6>
+                <p>Responsible for reviewing grant proposals for the Data Science for Food and Agriculture Systems awards.</p>
+            </div>
+        </div>
+
+        
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Work Experience</h2>
+        <div class="w3-container">
+            <h4 class="w3-opacity"><b>Climate LLC / Bayer</b></h4>
+            <h5 class="w3-opacity"><b>Principal Data Scientist</b></h5>
+            <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sept 2024 - <span class="w3-tag w3-blue w3-round">Current</span></h6>
+            <p>I lead agile teams to deliver ML-enabled tools and software. I am responsible influencing the strategic direction of the business unit and for defining quarterly milestones and two-week deliverables, and for working with commercial teams to align software development with business goals.</p>
+            <ul>
+                <li>Developed QGIS plugin software for improving efficiency of field boundary management.</li>
+                <li>Developed and delivered image- and text-classification neural network models for automated evidence verification to improve the efficiency of practice change evidence review.</li>
+                <li>Conducted exploratory work for fine-tuning and in-house hosting of an LLM RAG framework to enable natural language queries of carbon market registry documentation.</li>
+            </ul>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Lead Data Scientist</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Nov 2020 - Sept 2024</h6>
+          <p>I led agile teams to deliver predictive models for crop diseases. I was responsible for defining scientific strategy, quarterly milestones and two-week deliverables, and for working with commercial teams to align software development with business goals.</p>
+          <ul>
+            <li>Developed a deep learning gaussian process model for jointly forecasting multiple diseases. Later adapted for use across multiple programs.</li>
+            <li>Defined a data valuation strategy & hired two contractors to execute on it.</li>
+            <li>Identified and addressed the risks of collecting more of the same data across programs.</li>
+          </ul>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Senior Data Scientist</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>April 2018 - Nov 2020</h6>
+          <ul>
+            <li>Developed probabilistic deep learning models for in-season wheat disease forecasts.</li>
+            <li>Created deep learning embeddings of high-dimensional environmental data that are predictive of crop yield.</li>
+            <li>Mentored an intern to develop probabilistic deep learning models to forecast soybean yield over long lead times.</li>
+          </ul>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Geospatial Statistician</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2017 - April 2018</h6>
+          <p>Developed predictive models to identify crop nutrient deficiencies in soil using satellite imagery.</p>
+        </div>
+      </div>
+
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>Education</h2>
+        <div class="w3-container">
+        <h4 class="w3-opacity"><b>University of Florida</b></h4>
+          <h5 class="w3-opacity"><b>PhD, Agricultural and Biological Engineering</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2014 - May 2018</h6>
+          <h5 class="w3-opacity"><b>Master's, Statistics</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2012 - May 2014</h6>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h4 class="w3-opacity"><b>Mississippi State University</b></h4>
+          <h5 class="w3-opacity"><b>BS, Mathematics</b></h5>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2008 - May 2012</h6>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+<footer class="w3-container w3-blue w3-center w3-margin-top">
+  <p>Find me on LinkedIn: <a href="https://www.linkedin.com/in/hunter-r-merrill-3996b639/"><i class="fa fa-linkedin w3-hover-opacity" style="vertical-align: 0.03em;"></i></a></p>
+  <p>Last updated: 19 April 2025</p>
+</footer>
+
+</body>
 </html>
