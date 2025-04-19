@@ -14,7 +14,7 @@ const labels = [];
 
 // Generate data points for the chart
 const startX = 90;
-const endX = 210;
+const endX = 190;
 const step = 1; // Adjust for smoother or coarser curve
 
 for (let x = startX; x <= endX; x += step) {
@@ -81,12 +81,12 @@ const labels2 = [];
 
 // Generate data points for the chart
 const startX2 = 90;
-const endX2 = 210;
+const endX2 = 190;
 const step2 = 1; // Adjust for smoother or coarser curve
 
 for (let x = startX2; x <= endX2; x += step2) {
-  const y = normalDistribution(x, AeTmean2, AeTstdDev2);
-  AeTposterior.push(y);
+  const y2 = normalDistribution(x, AeTmean2, AeTstdDev2);
+  AeTposterior.push(y2);
   labels2.push(x.toFixed(0)); // Format x-axis labels to 0 decimal place
 }
 

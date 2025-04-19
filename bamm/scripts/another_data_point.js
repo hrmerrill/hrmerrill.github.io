@@ -17,8 +17,8 @@ const AeTstdDev2 = 2.89;
 const AeTposterior = [];
 
 // Generate data points for the chart
-const startX = 100;
-const endX = 180;
+const startX = 110;
+const endX = 170;
 const step = 1; // Adjust for smoother or coarser curve
 
 for (let x = startX; x <= endX; x += step) {
@@ -44,7 +44,7 @@ const aetChart = new Chart(ctx, {
         backgroundColor: '#87CEEB99',
         borderWidth: 1,
         fill: true, // fill the area under the curve
-        tension: 1 // Adjust curve smoothness (0 for straight lines)
+        tension: 0.4 // Adjust curve smoothness (0 for straight lines)
       },
       {
         label: 'AeT Posterior',

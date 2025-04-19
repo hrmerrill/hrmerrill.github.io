@@ -20,7 +20,7 @@ const labels = [];
 // Generate data points for the chart
 const startX = 90;
 const endX = 210;
-const step = 1; // Adjust for smoother or coarser curve
+const step = 2; // Adjust for smoother or coarser curve
 
 for (let x = startX; x <= endX; x += step) {
   const y = normalDistribution(x, Maxmean, MaxstdDev);
