@@ -11,7 +11,7 @@ const LTmean = 168;
 const LTstdDev = 4;
 const LTprior = [];
 
-const Maxmean = 189; 
+const Maxmean = 189;
 const MaxstdDev = 3;
 const Maxprior = [];
 
@@ -69,7 +69,7 @@ const myChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
-      point:{
+      point: {
         radius: 0
       }
     },
@@ -81,7 +81,7 @@ const myChart = new Chart(ctx, {
         },
         type: "linear",
         grid: {
-            display: true
+          display: true
         },
         ticks: {
           stepSize: 10,
@@ -100,7 +100,7 @@ const myChart = new Chart(ctx, {
           display: false
         },
         ticks: {
-          callback: function(val, index) {
+          callback: function (val, index) {
             return ""; // No y-axis ticks
           }
         },

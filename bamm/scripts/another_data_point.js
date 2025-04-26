@@ -2,9 +2,9 @@ const ctx = document.getElementById('aetChart').getContext('2d');
 
 // Function to calculate normal distribution probability density
 function normalDistribution(x, mean, stdDev) {
-    const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stdDev, 2));
-    const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
-    return coefficient * Math.exp(exponent);
+  const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stdDev, 2));
+  const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
+  return coefficient * Math.exp(exponent);
 }
 
 const AeTmean = 130;
@@ -61,7 +61,7 @@ const aetChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
-      point:{
+      point: {
         radius: 0
       }
     },
@@ -73,7 +73,7 @@ const aetChart = new Chart(ctx, {
         },
         type: "linear",
         grid: {
-            display: true
+          display: true
         },
         ticks: {
           stepSize: 10,

@@ -44,7 +44,7 @@ const aetChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
-      point:{
+      point: {
         radius: 0
       }
     },
@@ -56,7 +56,7 @@ const aetChart = new Chart(ctx, {
         },
         type: "linear",
         grid: {
-            display: true
+          display: true
         },
         ticks: {
           stepSize: 10,
@@ -120,7 +120,7 @@ const aetChartupdated = new Chart(ctx2, {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
-      point:{
+      point: {
         radius: 0
       }
     },
@@ -132,7 +132,7 @@ const aetChartupdated = new Chart(ctx2, {
         },
         type: "linear",
         grid: {
-            display: true
+          display: true
         },
         ticks: {
           stepSize: 10,

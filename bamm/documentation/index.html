@@ -1,44 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <head>
-    <title>Documentation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <h2>
-      <strong>BAMM Documentation</strong>
-      Establishing prior distributions and first measurements.
-    </h2>
-    <p>To obtain estimates of each metabolic marker, I'm mostly following the methods outlined in the book and described <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment/>here</a>. I'm also using Bayesian methods to quantify the uncertainty around these estimates, because estimates of these markers without some quantification of their uncertainty are far less useful to me for my endurance training.</p>
-    <h3>AeT</h3>
-    <p>The aerobic threshold (AeT) is</p>
-    <blockquote>"The uppermost intensity of exercise where the production of ATP begins to be dominated by glycolysis rather than by the oxidation of fats. At this point blood lactate begins to rise above the resting level." -<em>Training for the Uphill Athlete</em></blockquote>
-    <p>This threshold is arguably the most important to estimate, as I am severely undertrained for endurance and I need to keep almost all of my training at or below the AeT.</p>
-    <p>To establish a prior estimate of my AeT, I will use the maximum aerobic function (MAF) formula: 180 minus my age, with some modifiers. The most appropriate modifier is to subtract an additional five because I have not been training regularly, which would put the point estimate of my AeT at 140. However, rarely have I ever trained for endurance in my entire life, and until recently I struggled to finish even a mile run at any pace, so I put the chances of my AeT being at or above 140 at about 5%. A normal distribution with mean 130 bpm and standard deviation of 5 bpm describes this estimate nicely:</p>
-    <canvas id="aetChart"></canvas>
-    <div id="image-section" style="position: relative"></div>
-    <p>This is a conservative estimate, and exercising with my heart rate at 120 bpm would have a 95% chance of being below my true, unknown AeT.</p>
-    <h4>Increasing the precision of the AeT estimate</h4>
-    <p>While I now have a conservative estimate for my AeT and a conservative exercise program to follow, the uncertainty of my prior distribution is large, and I may be losing training volume or intensity by being <em>too</em> conservative. If my true, average AeT is in fact 140, then training at 120 would be in the middle of my Zone 1. I will therefore collect data to update my prior distribution. The first data point I will collect will use the <em>nose breathing test</em>:</p>
-    <blockquote>"All you need to do is close your mouth during a run and see if you can sustain breathing through your nose for several minutes at a time. Alternatively, see if you can carry on a conversation in medium-length full sentences."</blockquote>
-    <p>To conduct this test, I warmed up with a 10-minute bike ride followed by active stretching, then ran continuously for 30 minutes at the fastest pace at which I felt I could comfortably breathe through my nose. For the last five minutes, I also spoke to myself (not unusual for me) to verify that I could still hold a conversation. My average heart rate for this 30-minute run was 148 bpm.</p>
-    <p>To assimilate this data point into my distributional estimate for AeT, we need to do some Bayesian modeling. First, we describe the prior belief about my unknown average AeT using our normal distribution:</p>
-    <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,5^2)" height="30px">
-    <p>Next, we describe the likelihood of observing a given heart rate using the nose-breathing test (denoted <em>y<sub>NB</sub></em>) conditional on a true but unknown average AeT value:</p>
-    <img src="https://latex.codecogs.com/svg.image?&space;y_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{NB}^2)" height="30px">
-    <p>The details are omitted here, but we obtain the distribution of my average AeT given the observation <em>y<sub>NB</sub></em> with the following formula:</p>
-    <img src="https://latex.codecogs.com/svg.image?\text{AeT}|y_{NB}\sim&space;N\left(\frac{\frac{130}{5^2}&plus;\frac{y_{NB}}{\sigma^2_{NB}}}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}},\frac{1}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}}\right)" height="60px">
-    <p>Plugging in our data point of <em>y<sub>NB</sub></em>=148 bpm along with some conservative estimate for the uncertainty of this measurement (I will use 5 bpm, since I believe that repeating this test multiple times at the same conditioning will not result in an AeT measurement spread of much more than 20 bpm), we get a normal posterior distribution for my average AeT with mean of 139 and standard deviation of 3.52:</p>
-    <canvas id="aetChartupdated"></canvas>
-    <div id="image-section" style="position: relative"></div>
-    <p>Notice that collecting a single data point (and even assuming that data point has the same uncertainty as the prior) has not only shifted the distribution, but has also made it more precise (narrower). As more data points are collected, this posterior distribution will continue to narrow (and I can instead estimate the uncertainty of the measurements, rather than assume some value for them). A note: this distribution is an estimate of my <em>average</em> AeT, and does not represent the distribution of any <em>one measurement</em> of my AeT. Supposing I could calculate my AeT exactly on a daily basis, this distribution describes the likelihood of the average of those calculations, and does not describe the spread of those calculations.</p>
-    <script src="../scripts/priors.js"></script>
-  </body>
-  <p><a href="../index.html">Home</a></p>
-  <p><a href="another_data_point.html">Next</a></p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<head>
+  <title>Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <h2>
+    <strong>BAMM Documentation</strong>
+    Establishing prior distributions and first measurements.
+  </h2>
+  <p>To obtain estimates of each metabolic marker, I'm mostly following the methods outlined in the book and described
+    <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment />here</a>. I'm also
+    using Bayesian methods to quantify the uncertainty around these estimates, because estimates of these markers
+    without some quantification of their uncertainty are far less useful to me for my endurance training.</p>
+  <h3>AeT</h3>
+  <p>The aerobic threshold (AeT) is</p>
+  <blockquote>"The uppermost intensity of exercise where the production of ATP begins to be dominated by glycolysis
+    rather than by the oxidation of fats. At this point blood lactate begins to rise above the resting level."
+    -<em>Training for the Uphill Athlete</em></blockquote>
+  <p>This threshold is arguably the most important to estimate, as I am severely undertrained for endurance and I need
+    to keep almost all of my training at or below the AeT.</p>
+  <p>To establish a prior estimate of my AeT, I will use the maximum aerobic function (MAF) formula: 180 minus my age,
+    with some modifiers. The most appropriate modifier is to subtract an additional five because I have not been
+    training regularly, which would put the point estimate of my AeT at 140. However, rarely have I ever trained for
+    endurance in my entire life, and until recently I struggled to finish even a mile run at any pace, so I put the
+    chances of my AeT being at or above 140 at about 5%. A normal distribution with mean 130 bpm and standard deviation
+    of 5 bpm describes this estimate nicely:</p>
+  <canvas id="aetChart"></canvas>
+  <div id="image-section" style="position: relative"></div>
+  <p>This is a conservative estimate, and exercising with my heart rate at 120 bpm would have a 95% chance of being
+    below my true, unknown AeT.</p>
+  <h4>Increasing the precision of the AeT estimate</h4>
+  <p>While I now have a conservative estimate for my AeT and a conservative exercise program to follow, the uncertainty
+    of my prior distribution is large, and I may be losing training volume or intensity by being <em>too</em>
+    conservative. If my true, average AeT is in fact 140, then training at 120 would be in the middle of my Zone 1. I
+    will therefore collect data to update my prior distribution. The first data point I will collect will use the
+    <em>nose breathing test</em>:</p>
+  <blockquote>"All you need to do is close your mouth during a run and see if you can sustain breathing through your
+    nose for several minutes at a time. Alternatively, see if you can carry on a conversation in medium-length full
+    sentences."</blockquote>
+  <p>To conduct this test, I warmed up with a 10-minute bike ride followed by active stretching, then ran continuously
+    for 30 minutes at the fastest pace at which I felt I could comfortably breathe through my nose. For the last five
+    minutes, I also spoke to myself (not unusual for me) to verify that I could still hold a conversation. My average
+    heart rate for this 30-minute run was 148 bpm.</p>
+  <p>To assimilate this data point into my distributional estimate for AeT, we need to do some Bayesian modeling. First,
+    we describe the prior belief about my unknown average AeT using our normal distribution:</p>
+  <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,5^2)" height="30px">
+  <p>Next, we describe the likelihood of observing a given heart rate using the nose-breathing test (denoted
+    <em>y<sub>NB</sub></em>) conditional on a true but unknown average AeT value:</p>
+  <img src="https://latex.codecogs.com/svg.image?&space;y_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{NB}^2)"
+    height="30px">
+  <p>The details are omitted here, but we obtain the distribution of my average AeT given the observation
+    <em>y<sub>NB</sub></em> with the following formula:</p>
+  <img
+    src="https://latex.codecogs.com/svg.image?\text{AeT}|y_{NB}\sim&space;N\left(\frac{\frac{130}{5^2}&plus;\frac{y_{NB}}{\sigma^2_{NB}}}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}},\frac{1}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}}\right)"
+    height="60px">
+  <p>Plugging in our data point of <em>y<sub>NB</sub></em>=148 bpm along with some conservative estimate for the
+    uncertainty of this measurement (I will use 5 bpm, since I believe that repeating this test multiple times at the
+    same conditioning will not result in an AeT measurement spread of much more than 20 bpm), we get a normal posterior
+    distribution for my average AeT with mean of 139 and standard deviation of 3.52:</p>
+  <canvas id="aetChartupdated"></canvas>
+  <div id="image-section" style="position: relative"></div>
+  <p>Notice that collecting a single data point (and even assuming that data point has the same uncertainty as the
+    prior) has not only shifted the distribution, but has also made it more precise (narrower). As more data points are
+    collected, this posterior distribution will continue to narrow (and I can instead estimate the uncertainty of the
+    measurements, rather than assume some value for them). A note: this distribution is an estimate of my
+    <em>average</em> AeT, and does not represent the distribution of any <em>one measurement</em> of my AeT. Supposing I
+    could calculate my AeT exactly on a daily basis, this distribution describes the likelihood of the average of those
+    calculations, and does not describe the spread of those calculations.</p>
+  <script src="../scripts/priors.js"></script>
+</body>
+<p><a href="../index.html">Home</a></p>
+<p><a href="another_data_point.html">Next</a></p>
+
 </html>
