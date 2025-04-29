@@ -1,22 +1,19 @@
-function detectNarrow() {
-    if (window.matchMedia("(max-width: 768px)").matches) {
-        // Code to run if on a mobile device
-        console.log("Narrow device detected");
-        return true;
-    } else {
-        // Code to run if not on a mobile device
-        console.log("Not a narrow device");
-        return false;
-    }
-}
+const skillsLeft = document.getElementById("skills-left");
+const serviceBottom = document.getElementById("service-bottom");
+const skillsBottom = document.getElementById("skills-bottom");
+const serviceTop = document.getElementById("service-top");
+const bio = document.getElementById("bio");
+const education = document.getElementById("education");
 
-function toggleCards(isNarrow) {
-    const skillsLeft = document.getElementById("skills-left");
-    const serviceBottom = document.getElementById("service-bottom");
-    const skillsBottom = document.getElementById("skills-bottom");
-    const serviceTop = document.getElementById("service-top");
-    const bio = document.getElementById("bio");
-    const education = document.getElementById("education");
+function detectNarrow() {
+    const isNarrow1 = window.innerWidth <= 768;
+    const isNarrow2 = window.matchMedia("(max-width: 768px)").matches;
+    const isNarrow3 = document.documentElement.clientWidth <= 768;
+    return isNarrow1 || isNarrow2 || isNarrow3;
+};
+
+function toggleCards() {
+    const isNarrow = detectNarrow();
     if (isNarrow) {
         skillsLeft.style.display = "none";
         serviceBottom.style.display = "block";
@@ -27,11 +24,11 @@ function toggleCards(isNarrow) {
         serviceBottom.style.display = "none";
         skillsBottom.style.display = "none";
         serviceTop.style.display = "block";
+
         bio.classList.add("w3-margin-bottom");
         education.classList.remove("w3-margin-bottom");
     }
-}
+};
 
-document.addEventListener("DOMContentLoaded", () => {
-    toggleCards(detectNarrow());
-});
+window.addEventListener("resize", toggleCards);
+document.addEventListener("DOMContentLoaded", toggleCards);
