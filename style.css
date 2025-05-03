@@ -1314,34 +1314,58 @@ a {
 
 .w3-animate-pill-dark-shimmer {
     animation: animatepilldarkshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
-    background: linear-gradient(270deg, #4169E1, #19a96f 35%, #b538e3 65%, #4169E1) 0 0 /440% 100%;
+    background: linear-gradient(270deg, #4169E1, #19a96f 35%, #b538e3 65%, #4169E1) 0 0 /400% 100%;
 }
 
 @keyframes animatepilldarkshimmer {
-    to {
+    0% {
+        background-position: 0% 0
+    }
+
+    50% {
         background-position: -100% 0
+    }
+
+    100% {
+        background-position: 0% 0
     }
 }
 
 .w3-animate-pill-medium-shimmer {
     animation: animatepillmediumshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
-    background: linear-gradient(270deg, #60d2ff, #4effaf 35%, #daa2ff 65%, #60d2ff) 0 0 /440% 100%;
+    background: linear-gradient(270deg, #60d2ff, #4effaf 35%, #daa2ff 65%, #60d2ff) 0 0 /400% 100%;
 }
 
 @keyframes animatepillmediumshimmer {
-    to {
+    0% {
+        background-position: 0% 0
+    }
+
+    50% {
         background-position: -100% 0
+    }
+
+    100% {
+        background-position: 0% 0
     }
 }
 
 .w3-animate-pill-light-shimmer {
     animation: animatepilllightshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
-    background: linear-gradient(270deg, #93f2ff, #b7ffd9 35%, #e6c8ff 65%, #93f2ff) 0 0 /440% 100%;
+    background: linear-gradient(270deg, #93f2ff, #b7ffd9 35%, #e6c8ff 65%, #93f2ff) 0 0 /400% 100%;
 }
 
 @keyframes animatepilllightshimmer {
-    to {
+    0% {
+        background-position: 0% 0
+    }
+
+    50% {
         background-position: -100% 0
+    }
+
+    100% {
+        background-position: 0% 0
     }
 }
 
