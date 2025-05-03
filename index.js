@@ -36,7 +36,7 @@ let options = { root: null, rootMargin: '0px', threshold: 0.01 };
 function bottomsUpCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            if (entry.target.id != "name") {
+            if (entry.target.id != "name" && entry.target.id != "footer") {
                 entry.target.classList.add("w3-animate-bottom");
             }
         }
