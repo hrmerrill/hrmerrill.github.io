@@ -2216,4 +2216,16 @@ w3-hover-cobalt:hover {
     .w3-animate-input {
         animation: none !important;
     }
+
+    .w3-animate-pill-dark-shimmer {
+        animation: none !important;
+    }
+
+    .w3-animate-pill-medium-shimmer {
+        animation: none !important;
+    }
+
+    .w3-animate-pill-light-shimmer {
+        animation: none !important;
+    }
 }
