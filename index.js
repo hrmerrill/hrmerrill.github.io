@@ -1,7 +1,7 @@
 const skillsLeft = document.getElementById("skills-left");
-const serviceBottom = document.getElementById("service-bottom");
+const projectsLeft = document.getElementById("projects-left");
 const skillsBottom = document.getElementById("skills-bottom");
-const serviceTop = document.getElementById("service-top");
+const projectsBottom = document.getElementById("projects-bottom");
 const bio = document.getElementById("bio");
 const education = document.getElementById("education");
 
@@ -17,14 +17,14 @@ function toggleCards() {
     const isNarrow = detectNarrow();
     if (isNarrow) {
         skillsLeft.style.display = "none";
-        serviceBottom.style.display = "block";
+        projectsLeft.style.display = "none";
         skillsBottom.style.display = "block";
-        serviceTop.style.display = "none";
+        projectsBottom.style.display = "block";
     } else {
         skillsLeft.style.display = "block";
-        serviceBottom.style.display = "none";
+        projectsLeft.style.display = "block";
         skillsBottom.style.display = "none";
-        serviceTop.style.display = "block";
+        projectsBottom.style.display = "none";
 
         bio.classList.add("w3-margin-bottom");
         education.classList.remove("w3-margin-bottom");
@@ -48,9 +48,11 @@ document.querySelectorAll(".w3-container, .w3-display-container").forEach(card =
 });
 
 // Add color transition to tags when they come into view
+var iteration = 0;
 function colorTransitionCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            iteration += 1;
             if (entry.target.classList.contains("w3-blue")) {
                 entry.target.classList.add("w3-animate-pill-dark-shimmer");
             } else if (entry.target.classList.contains("w3-light-blue")) {
@@ -58,12 +60,23 @@ function colorTransitionCallbackFunc(entries, observer) {
             } else if (entry.target.classList.contains("w3-very-light-blue")) {
                 entry.target.classList.add("w3-animate-pill-light-shimmer");
             }
+            entry.target.classList.add(`delay-${iteration}`);
         } else {
             entry.target.classList.remove("w3-animate-pill-dark-shimmer");
             entry.target.classList.remove("w3-animate-pill-medium-shimmer");
             entry.target.classList.remove("w3-animate-pill-light-shimmer");
+
+            let classNames = entry.target.className.split(' ');
+            classNames = classNames.filter(className => !className.startsWith("delay-"));
+            entry.target.className = classNames.join(' ');
         }
-    })
+    });
+
+    // if max is hit or all tags out of view, reset iteration
+    const visibleTags = Array.from(entries).filter(entry => entry.isIntersecting);
+    if (iteration > 39 || visibleTags.length === 0) {
+        iteration = 0;
+    }
 }
 let tagObserver = new IntersectionObserver(colorTransitionCallbackFunc, options);
 document.querySelectorAll(".w3-tag.w3-round-xlarge").forEach(card => {
