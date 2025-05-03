@@ -36,15 +36,8 @@ let options = { root: null, rootMargin: '0px', threshold: 0.01 };
 function bottomsUpCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // by ID, so that only the elements I name get the animation
-            var textId = entry.target.id;
-            if (textId) {
-                var elem = document.getElementById(entry.target.id);
-                try {
-                    elem.classList.add("w3-animate-bottom");
-                } catch (e) {
-                    console.log("Error adding class to element:", e);
-                }
+            if (entry.target.id != "name") {
+                entry.target.classList.add("w3-animate-bottom");
             }
         }
     })

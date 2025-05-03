@@ -1096,6 +1096,10 @@ a {
     padding: 0 8px
 }
 
+.w3-container {
+    opacity: 0;
+}
+
 .w3-container,
 .w3-panel {
     padding: 0.01em 16px
@@ -1263,6 +1267,7 @@ a {
 }
 
 .w3-animate-bottom {
+    opacity: 1;
     position: relative;
     -webkit-animation: animatebottom 0.4s;
     -moz-animation: animatebottom 0.4s;
@@ -1273,7 +1278,7 @@ a {
 
 @keyframes animatebottom {
     from {
-        bottom: -300px;
+        bottom: -100px;
         opacity: 0
     }
 
@@ -1285,7 +1290,7 @@ a {
 
 @-webkit-keyframes animatebottom {
     from {
-        bottom: -300px;
+        bottom: -100px;
         opacity: 0
     }
 
@@ -1297,7 +1302,7 @@ a {
 
 @-moz-keyframes animatebottom {
     from {
-        bottom: -300px;
+        bottom: -100px;
         opacity: 0
     }
 
@@ -1308,35 +1313,35 @@ a {
 }
 
 .w3-animate-pill-dark-shimmer {
-    animation: animatepilldarkshimmer 8s cubic-bezier(.37, 0, .63, 1) 0s;
+    animation: animatepilldarkshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
     background: linear-gradient(270deg, #4169E1, #19a96f 35%, #b538e3 65%, #4169E1) 0 0 /440% 100%;
 }
 
 @keyframes animatepilldarkshimmer {
     to {
-        background-position: -400% 0
+        background-position: -100% 0
     }
 }
 
 .w3-animate-pill-medium-shimmer {
-    animation: animatepillmediumshimmer 8s cubic-bezier(.37, 0, .63, 1) 0s;
+    animation: animatepillmediumshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
     background: linear-gradient(270deg, #60d2ff, #4effaf 35%, #daa2ff 65%, #60d2ff) 0 0 /440% 100%;
 }
 
 @keyframes animatepillmediumshimmer {
     to {
-        background-position: -400% 0
+        background-position: -100% 0
     }
 }
 
 .w3-animate-pill-light-shimmer {
-    animation: animatepilllightshimmer 8s cubic-bezier(.37, 0, .63, 1) 0s;
+    animation: animatepilllightshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
     background: linear-gradient(270deg, #93f2ff, #b7ffd9 35%, #e6c8ff 65%, #93f2ff) 0 0 /440% 100%;
 }
 
 @keyframes animatepilllightshimmer {
     to {
-        background-position: -400% 0
+        background-position: -100% 0
     }
 }
 
