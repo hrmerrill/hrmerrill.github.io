@@ -26,8 +26,8 @@ function toggleCards() {
         skillsBottom.style.display = "none";
         projectsBottom.style.display = "none";
 
-        bio.classList.add("w3-margin-bottom");
-        education.classList.remove("w3-margin-bottom");
+        bio.classList.add("margin-bottom");
+        education.classList.remove("margin-bottom");
     }
 };
 
@@ -37,13 +37,13 @@ function bottomsUpCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             if (entry.target.id != "name" && entry.target.id != "footer") {
-                entry.target.classList.add("w3-animate-bottom");
+                entry.target.classList.add("animate-bottom");
             }
         }
     })
 }
 let bottomsUpObserver = new IntersectionObserver(bottomsUpCallbackFunc, options);
-document.querySelectorAll(".w3-container, .w3-display-container").forEach(card => {
+document.querySelectorAll(".container, .display-container").forEach(card => {
     bottomsUpObserver.observe(card);
 });
 
@@ -53,18 +53,18 @@ function colorTransitionCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             iteration += 1;
-            if (entry.target.classList.contains("w3-blue")) {
-                entry.target.classList.add("w3-animate-pill-dark-shimmer");
-            } else if (entry.target.classList.contains("w3-light-blue")) {
-                entry.target.classList.add("w3-animate-pill-medium-shimmer");
-            } else if (entry.target.classList.contains("w3-very-light-blue")) {
-                entry.target.classList.add("w3-animate-pill-light-shimmer");
+            if (entry.target.classList.contains("blue")) {
+                entry.target.classList.add("animate-pill-dark-shimmer");
+            } else if (entry.target.classList.contains("light-blue")) {
+                entry.target.classList.add("animate-pill-medium-shimmer");
+            } else if (entry.target.classList.contains("very-light-blue")) {
+                entry.target.classList.add("animate-pill-light-shimmer");
             }
             entry.target.classList.add(`delay-${iteration}`);
         } else {
-            entry.target.classList.remove("w3-animate-pill-dark-shimmer");
-            entry.target.classList.remove("w3-animate-pill-medium-shimmer");
-            entry.target.classList.remove("w3-animate-pill-light-shimmer");
+            entry.target.classList.remove("animate-pill-dark-shimmer");
+            entry.target.classList.remove("animate-pill-medium-shimmer");
+            entry.target.classList.remove("animate-pill-light-shimmer");
 
             let classNames = entry.target.className.split(' ');
             classNames = classNames.filter(className => !className.startsWith("delay-"));
@@ -79,7 +79,7 @@ function colorTransitionCallbackFunc(entries, observer) {
     }
 }
 let tagObserver = new IntersectionObserver(colorTransitionCallbackFunc, options);
-document.querySelectorAll(".w3-tag.w3-round-xlarge").forEach(card => {
+document.querySelectorAll(".tag.round-xlarge").forEach(card => {
     tagObserver.observe(card);
 });
 
