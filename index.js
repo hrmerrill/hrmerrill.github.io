@@ -85,3 +85,33 @@ document.querySelectorAll(".tag.round-xlarge").forEach(card => {
 
 window.addEventListener("resize", toggleCards);
 document.addEventListener("DOMContentLoaded", toggleCards);
+
+window.addEventListener('beforeprint', () => {
+    const footer = document.getElementById("footer");
+    const sideFooter = document.getElementById("footer-left");
+    const leftColumn = document.getElementById("left-column");
+
+    // Hide the footer
+    footer.style.display = "none";
+
+    // Resize the side footer to fit the screen
+    let scrollHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+    );
+
+    var neededHeight = scrollHeight - leftColumn.offsetHeight - 16; // 16px for margin
+    sideFooter.style.height = `${neededHeight}px`;
+    sideFooter.style.display = "block";
+});
+
+window.addEventListener('afterprint', () => {
+    const footer = document.getElementById("footer");
+    const sideFooter = document.getElementById("footer-left");
+    footer.style.display = "block";
+    sideFooter.style.display = "none";
+});
