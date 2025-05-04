@@ -2418,3 +2418,13 @@ hover-cobalt:hover {
         animation: none !important;
     }
 }
+
+.centered-text {
+    text-align: center;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
