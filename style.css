@@ -1313,7 +1313,8 @@ a {
 }
 
 .animate-pill-dark-shimmer {
-    animation: animatepilldarkshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
+    /* animation: animatepilldarkshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s; */
+    animation: none;
     background: linear-gradient(270deg, #4169E1, #19a96f 35%, #b538e3 65%, #4169E1) 0 0 /400% 100%;
 }
 
@@ -1332,7 +1333,8 @@ a {
 }
 
 .animate-pill-medium-shimmer {
-    animation: animatepillmediumshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
+    /* animation: animatepillmediumshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s; */
+    animation: none;
     background: linear-gradient(270deg, #60d2ff, #4effaf 35%, #daa2ff 65%, #60d2ff) 0 0 /400% 100%;
 }
 
@@ -1351,7 +1353,8 @@ a {
 }
 
 .animate-pill-light-shimmer {
-    animation: animatepilllightshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s;
+    /* animation: animatepilllightshimmer 2s cubic-bezier(.37, 0, .63, 1) 0s; */
+    animation: none;
     background: linear-gradient(270deg, #93f2ff, #b7ffd9 35%, #e6c8ff 65%, #93f2ff) 0 0 /400% 100%;
 }
 
