@@ -3,8 +3,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <head>
-  <title>Documentation</title>
+  <title>Documentation - Bayesian Assessment of Metabolic Markers - Hunter Merrill</title>
+  <meta name="description" content="A training journal in which Hunter uses blood lactate data and Bayesian inference to estimate my
+    aerobic and lactate thresholds.">
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://hrmerrill.github.io/bamm/documentation/index.html">
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +26,8 @@
   <p>To obtain estimates of each metabolic marker, I'm mostly following the methods outlined in the book and described
     <a href=https://uphillathlete.com/aerobic-training/aerobic-anaerobic-threshold-self-assessment />here</a>. I'm also
     using Bayesian methods to quantify the uncertainty around these estimates, because estimates of these markers
-    without some quantification of their uncertainty are far less useful to me for my endurance training.</p>
+    without some quantification of their uncertainty are far less useful to me for my endurance training.
+  </p>
   <h3>AeT</h3>
   <p>The aerobic threshold (AeT) is</p>
   <blockquote>"The uppermost intensity of exercise where the production of ATP begins to be dominated by glycolysis
@@ -44,7 +50,8 @@
     of my prior distribution is large, and I may be losing training volume or intensity by being <em>too</em>
     conservative. If my true, average AeT is in fact 140, then training at 120 would be in the middle of my Zone 1. I
     will therefore collect data to update my prior distribution. The first data point I will collect will use the
-    <em>nose breathing test</em>:</p>
+    <em>nose breathing test</em>:
+  </p>
   <blockquote>"All you need to do is close your mouth during a run and see if you can sustain breathing through your
     nose for several minutes at a time. Alternatively, see if you can carry on a conversation in medium-length full
     sentences."</blockquote>
@@ -56,11 +63,13 @@
     we describe the prior belief about my unknown average AeT using our normal distribution:</p>
   <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,5^2)" height="30px">
   <p>Next, we describe the likelihood of observing a given heart rate using the nose-breathing test (denoted
-    <em>y<sub>NB</sub></em>) conditional on a true but unknown average AeT value:</p>
+    <em>y<sub>NB</sub></em>) conditional on a true but unknown average AeT value:
+  </p>
   <img src="https://latex.codecogs.com/svg.image?&space;y_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{NB}^2)"
     height="30px">
   <p>The details are omitted here, but we obtain the distribution of my average AeT given the observation
-    <em>y<sub>NB</sub></em> with the following formula:</p>
+    <em>y<sub>NB</sub></em> with the following formula:
+  </p>
   <img
     src="https://latex.codecogs.com/svg.image?\text{AeT}|y_{NB}\sim&space;N\left(\frac{\frac{130}{5^2}&plus;\frac{y_{NB}}{\sigma^2_{NB}}}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}},\frac{1}{\frac{1}{5^2}&plus;\frac{1}{\sigma^2_{NB}}}\right)"
     height="60px">
@@ -76,7 +85,8 @@
     measurements, rather than assume some value for them). A note: this distribution is an estimate of my
     <em>average</em> AeT, and does not represent the distribution of any <em>one measurement</em> of my AeT. Supposing I
     could calculate my AeT exactly on a daily basis, this distribution describes the likelihood of the average of those
-    calculations, and does not describe the spread of those calculations.</p>
+    calculations, and does not describe the spread of those calculations.
+  </p>
   <script src="../scripts/priors.js"></script>
 </body>
 <p><a href="../index.html">Home</a></p>

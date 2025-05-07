@@ -4,6 +4,8 @@ const skillsBottom = document.getElementById("skills-bottom");
 const projectsBottom = document.getElementById("projects-bottom");
 const bio = document.getElementById("bio");
 const education = document.getElementById("education");
+const leftColumn = document.getElementById("left-column");
+const rightColumn = document.getElementById("right-column");
 
 function detectNarrow() {
     const isNarrow1 = window.innerWidth <= 768;
@@ -89,7 +91,10 @@ document.addEventListener("DOMContentLoaded", toggleCards);
 window.addEventListener('beforeprint', () => {
     const footer = document.getElementById("footer");
     const sideFooter = document.getElementById("footer-left");
-    const leftColumn = document.getElementById("left-column");
+
+    // resize
+    leftColumn.style.width = "30%";
+    rightColumn.style.width = "70%";
 
     // Hide the footer
     footer.style.display = "none";
@@ -112,6 +117,8 @@ window.addEventListener('beforeprint', () => {
 window.addEventListener('afterprint', () => {
     const footer = document.getElementById("footer");
     const sideFooter = document.getElementById("footer-left");
+    leftColumn.style.width = "33.333333%";
+    rightColumn.style.width = "66.666666%";
     footer.style.display = "block";
     sideFooter.style.display = "none";
 });
