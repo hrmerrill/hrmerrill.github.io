@@ -2437,3 +2437,14 @@ hover-cobalt:hover {
         height: 11in;
     }
 }
+
+
+.blue-link {
+    color: #fff !important;
+    background-color: #4169E1 !important;
+    transition: 0.3s;
+}
+
+.blue-link:hover {
+    background: #b538e3 !important;
+}

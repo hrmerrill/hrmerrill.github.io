@@ -6,6 +6,8 @@ const bio = document.getElementById("bio");
 const education = document.getElementById("education");
 const leftColumn = document.getElementById("left-column");
 const rightColumn = document.getElementById("right-column");
+const downloadLeft = document.getElementById("download-left");
+const downloadBottom = document.getElementById("download-bottom");
 
 function detectNarrow() {
     const isNarrow1 = window.innerWidth <= 768;
@@ -22,11 +24,15 @@ function toggleCards() {
         projectsLeft.style.display = "none";
         skillsBottom.style.display = "block";
         projectsBottom.style.display = "block";
+        downloadBottom.style.display = "block";
+        downloadLeft.style.display = "none";
     } else {
         skillsLeft.style.display = "block";
         projectsLeft.style.display = "block";
         skillsBottom.style.display = "none";
         projectsBottom.style.display = "none";
+        downloadBottom.style.display = "none";
+        downloadLeft.style.display = "block";
 
         bio.classList.add("margin-bottom");
         education.classList.remove("margin-bottom");
@@ -38,7 +44,8 @@ let options = { root: null, rootMargin: '0px', threshold: 0.01 };
 function bottomsUpCallbackFunc(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            if (entry.target.id != "name" && entry.target.id != "footer") {
+            if (entry.target.id != "name" && entry.target.id != "footer" &&
+                entry.target.id != "cv-web" && entry.target.id != "cv-text") {
                 entry.target.classList.add("animate-bottom");
             }
         }
@@ -93,11 +100,13 @@ window.addEventListener('beforeprint', () => {
     const sideFooter = document.getElementById("footer-left");
 
     // resize
-    leftColumn.style.width = "30%";
-    rightColumn.style.width = "70%";
+    leftColumn.style.width = "31%";
+    rightColumn.style.width = "69%";
 
-    // Hide the footer
+    // Hide the footer and download buttons
     footer.style.display = "none";
+    downloadLeft.style.display = "none";
+    downloadBottom.style.display = "none";
 
     // Resize the side footer to fit the screen
     let scrollHeight = Math.max(
@@ -121,4 +130,5 @@ window.addEventListener('afterprint', () => {
     rightColumn.style.width = "66.666666%";
     footer.style.display = "block";
     sideFooter.style.display = "none";
+    toggleCards();
 });
