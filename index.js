@@ -8,6 +8,7 @@ const leftColumn = document.getElementById("left-column");
 const rightColumn = document.getElementById("right-column");
 const downloadLeft = document.getElementById("download-left");
 const downloadBottom = document.getElementById("download-bottom");
+const pageContainer = document.getElementById("page-container");
 
 function detectNarrow() {
     const isNarrow1 = window.innerWidth <= 768;
@@ -100,8 +101,12 @@ window.addEventListener('beforeprint', () => {
     const sideFooter = document.getElementById("footer-left");
 
     // resize
-    leftColumn.style.width = "31%";
-    rightColumn.style.width = "69%";
+    // leftColumn.style.width = "27%";
+    // rightColumn.style.width = "73%";
+    pageContainer.style.maxWidth = "1600px";
+
+    // resize font
+    document.body.style.fontSize = "18px";
 
     // Hide the footer and download buttons
     footer.style.display = "none";
@@ -118,7 +123,7 @@ window.addEventListener('beforeprint', () => {
         document.documentElement.clientHeight
     );
 
-    var neededHeight = scrollHeight - leftColumn.offsetHeight - 16; // 16px for margin
+    var neededHeight = scrollHeight - leftColumn.offsetHeight - 16 - 100; // 16px for margin
     sideFooter.style.height = `${neededHeight}px`;
     sideFooter.style.display = "block";
 });
@@ -130,5 +135,7 @@ window.addEventListener('afterprint', () => {
     rightColumn.style.width = "66.666666%";
     footer.style.display = "block";
     sideFooter.style.display = "none";
+    document.body.style.fontSize = "15px";
+    pageContainer.style.maxWidth = "1400px";
     toggleCards();
 });
