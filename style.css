@@ -1823,6 +1823,18 @@ a {
     background-color: #4169E1 !important
 }
 
+.faded-red,
+.hover-faded-red:hover {
+    color: #fff !important;
+    background-color: #a55851 !important
+}
+
+.dark-red,
+.hover-dark-red:hover {
+    color: #fff !important;
+    background-color: #693833 !important
+}
+
 .light-blue,
 .hover-light-blue:hover {
     color: #000 !important;
@@ -2080,6 +2092,17 @@ hover-cobalt:hover {
 .hover-text-blue:hover {
     color: #4169E1 !important
 }
+
+.text-faded-red,
+.hover-text-faded-red:hover {
+    color: #a55851 !important
+}
+
+.text-dark-red,
+.hover-text-dark-red:hover {
+    color: #693833 !important
+}
+
 
 .text-light-blue,
 .hover-text-light-blue:hover {
@@ -2446,5 +2469,15 @@ hover-cobalt:hover {
 }
 
 .blue-link:hover {
+    background: #b538e3 !important;
+}
+
+.faded-red-link {
+    color: #fff !important;
+    background-color: #a55851 !important;
+    transition: 0.3s;
+}
+
+.faded-red-link:hover {
     background: #b538e3 !important;
 }
