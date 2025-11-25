@@ -1832,7 +1832,7 @@ a {
 .dark-red,
 .hover-dark-red:hover {
     color: #fff !important;
-    background-color: #693833 !important
+    background-color: #a33b3b !important
 }
 
 .light-blue,
@@ -2100,7 +2100,7 @@ hover-cobalt:hover {
 
 .text-dark-red,
 .hover-text-dark-red:hover {
-    color: #693833 !important
+    color: #a33b3b !important
 }
 
 
