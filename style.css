@@ -1826,7 +1826,7 @@ a {
 .faded-red,
 .hover-faded-red:hover {
     color: #fff !important;
-    background-color: #a55851 !important
+    background-color: #d65d5d !important
 }
 
 .dark-red,
@@ -1948,7 +1948,7 @@ a {
 .white,
 .hover-white:hover {
     color: #000 !important;
-    background-color: #fff !important
+    background-color: #F9F9F7 !important
 }
 
 .black,
@@ -2095,7 +2095,7 @@ hover-cobalt:hover {
 
 .text-faded-red,
 .hover-text-faded-red:hover {
-    color: #a55851 !important
+    color: #d65d5d !important
 }
 
 .text-dark-red,
@@ -2474,10 +2474,10 @@ hover-cobalt:hover {
 
 .faded-red-link {
     color: #fff !important;
-    background-color: #a55851 !important;
+    background-color: #d65d5d !important;
     transition: 0.3s;
 }
 
 .faded-red-link:hover {
-    background: #b538e3 !important;
+    background: #762494 !important;
 }
