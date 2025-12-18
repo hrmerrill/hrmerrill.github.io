@@ -100,37 +100,41 @@ window.addEventListener('beforeprint', () => {
     const footer = document.getElementById("footer");
     const sideFooter = document.getElementById("footer-left");
 
-    // resize
-    // leftColumn.style.width = "27%";
-    // rightColumn.style.width = "73%";
-    pageContainer.style.maxWidth = "1600px";
-
-    // resize font
-    document.body.style.fontSize = "18px";
-
-    // Hide the footer and download buttons
-    footer.style.display = "none";
+    // Force layout to desktop mode (keep skills/projects on left)
+    skillsLeft.style.display = "block";
+    projectsLeft.style.display = "block";
+    skillsBottom.style.display = "none";
+    projectsBottom.style.display = "none";
     downloadLeft.style.display = "none";
     downloadBottom.style.display = "none";
 
-    // Resize the side footer to fit the screen
-    let scrollHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight
-    );
+    // resize
+    pageContainer.style.maxWidth = "1600px";
 
-    var neededHeight = scrollHeight - leftColumn.offsetHeight - 16 - 100; // 16px for margin
-    sideFooter.style.height = `${neededHeight}px`;
+    // resize font
+    document.body.style.fontSize = "12px";
+
+    // Hide the footer
+    footer.style.display = "none";
+
+    // Move Education to left column under Bio
+    bio.classList.add("margin-bottom");
+    bio.insertAdjacentElement('afterend', education);
+    education.classList.add("margin-bottom");
+
+    // Show the side footer (without resizing height)
     sideFooter.style.display = "block";
+    sideFooter.style.height = "auto";
 });
 
 window.addEventListener('afterprint', () => {
     const footer = document.getElementById("footer");
     const sideFooter = document.getElementById("footer-left");
+    const serviceTop = document.getElementById("service-top");
+
+    // Move Education back to right column under Service
+    serviceTop.insertAdjacentElement('afterend', education);
+
     leftColumn.style.width = "33.333333%";
     rightColumn.style.width = "66.666666%";
     footer.style.display = "block";

@@ -2459,6 +2459,49 @@ hover-cobalt:hover {
     body {
         height: 11in;
     }
+
+    .third {
+        width: 33.33333% !important;
+    }
+
+    .twothird {
+        width: 66.66666% !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 5px 0 !important;
+    }
+
+    .margin-bottom {
+        margin-bottom: 8px !important;
+    }
+
+    .padding-16 {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    p {
+        margin: 5px 0 !important;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .centered-text {
+        position: static !important;
+        transform: none !important;
+    }
 }
 
 
