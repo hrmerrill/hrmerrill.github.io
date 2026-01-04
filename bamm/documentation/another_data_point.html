@@ -19,52 +19,66 @@
 </head>
 
 <body>
-  <h2>
-    <strong>BAMM Documentation</strong>
-    Assimilating more data points.
-  </h2>
-  <p>I've conducted another NB test and collected a new data point for my AeT: 158 bpm. With this new data point, I want
-    to update my estimate for my unknown average AeT. But first, a note: while in my first NB test I used the average
-    heart rate of a 30-minute run in which I could breathe comfortably through my nose, in my second test I measured it
-    a bit differently: it was the maximum heart rate I could sustain at which I could comfortably breathe through my
-    nose for a few minutes at a time. On multiple occasions, I purposefully increased my pace to see the heart rate at
-    which I needed to open my mouth for air. Though I conducted this NB test slightly differently, I am already
-    accounting for uncertainty in AeT measurements by using Bayesian modeling; specifically, in the previous page I
-    assumed a standard deviation of 5 bpm for these measurements. I can then use a conservative estimate for my AeT
-    (e.g., the lower 10% quantile), and define my Zone 2 using this number. I am therefore not concerned about my
-    results being influenced by changing my measurement protocol, because I am already properly accounting for
-    uncertainty in these measurements and choosing conservative estimates for my AeT.</p>
-  <p>With multiple data points, the math for the posterior distribution changes a bit. Recall the prior distribution of
-    my average AeT:</p>
-  <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,\sigma_{AeT}^2)" height="30px">
-  <p>We describe the likelihood of observing a number of heart rates using the nose-breathing test (denoted
-    <em>y<sup>(i)</sup><sub>NB</sub></em> for <em>i=1,...,n</em>) conditional on a true but unknown average AeT value
-    similarly as before, but for convenience we will assume the standard deviation is the same as that of the AeT:
-  </p>
-  <img
-    src="https://latex.codecogs.com/svg.image?y^{(i)}_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{AeT}^2),\quad&space;i=1,...,n"
-    height="30px">
-  <p>What we want is the distribution of AeT|<em>y<sup>(i)</sup><sub>NB</sub></em>; that is, the distribution of my
-    average AeT given the data points I've collected using the nose-breathing test. The math is skipped, but the
-    posterior distribution of AeT given the data points is</p>
-  <img
-    src="https://latex.codecogs.com/svg.image?\text{AeT}|y^{(i)}_{NB}\sim&space;N\left(\frac{\sum_{i=1}^n&space;y_i&plus;130}{n&plus;1},\frac{\sigma^2_{AeT}}{n&plus;1}\right)"
-    height="60px">
-  <p>Plugging in our numbers, we get</p>
-  <img src="https://latex.codecogs.com/svg.image?\text{AeT}|y^{(i)}_{NB}\sim&space;N\left(145.33,2.89\right)"
-    height="30px">
+  <nav class="nav-panel">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">BAMM Journal</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Documentation</a>
+      </div>
+    </div>
+  </nav>
 
-  <canvas id="aetChart"></canvas>
-  <div id="image-section" style="position: relative">
-    <script src="../scripts/another_data_point.js"></script>
+  <div class="container">
+    <h2>
+      <strong>BAMM Documentation</strong>
+      Assimilating more data points.
+    </h2>
+    <p>I've conducted another NB test and collected a new data point for my AeT: 158 bpm. With this new data point, I
+      want
+      to update my estimate for my unknown average AeT. But first, a note: while in my first NB test I used the average
+      heart rate of a 30-minute run in which I could breathe comfortably through my nose, in my second test I measured
+      it
+      a bit differently: it was the maximum heart rate I could sustain at which I could comfortably breathe through my
+      nose for a few minutes at a time. On multiple occasions, I purposefully increased my pace to see the heart rate at
+      which I needed to open my mouth for air. Though I conducted this NB test slightly differently, I am already
+      accounting for uncertainty in AeT measurements by using Bayesian modeling; specifically, in the previous page I
+      assumed a standard deviation of 5 bpm for these measurements. I can then use a conservative estimate for my AeT
+      (e.g., the lower 10% quantile), and define my Zone 2 using this number. I am therefore not concerned about my
+      results being influenced by changing my measurement protocol, because I am already properly accounting for
+      uncertainty in these measurements and choosing conservative estimates for my AeT.</p>
+    <p>With multiple data points, the math for the posterior distribution changes a bit. Recall the prior distribution
+      of
+      my average AeT:</p>
+    <img src="https://latex.codecogs.com/svg.image?\text{AeT}\sim&space;N(130,\sigma_{AeT}^2)" height="30px">
+    <p>We describe the likelihood of observing a number of heart rates using the nose-breathing test (denoted
+      <em>y<sup>(i)</sup><sub>NB</sub></em> for <em>i=1,...,n</em>) conditional on a true but unknown average AeT value
+      similarly as before, but for convenience we will assume the standard deviation is the same as that of the AeT:
+    </p>
+    <img
+      src="https://latex.codecogs.com/svg.image?y^{(i)}_{NB}|\text{AeT}\sim&space;N(\text{AeT},\sigma_{AeT}^2),\quad&space;i=1,...,n"
+      height="30px">
+    <p>What we want is the distribution of AeT|<em>y<sup>(i)</sup><sub>NB</sub></em>; that is, the distribution of my
+      average AeT given the data points I've collected using the nose-breathing test. The math is skipped, but the
+      posterior distribution of AeT given the data points is</p>
+    <img
+      src="https://latex.codecogs.com/svg.image?\text{AeT}|y^{(i)}_{NB}\sim&space;N\left(\frac{\sum_{i=1}^n&space;y_i&plus;130}{n&plus;1},\frac{\sigma^2_{AeT}}{n&plus;1}\right)"
+      height="60px">
+    <p>Plugging in our numbers, we get</p>
+    <img src="https://latex.codecogs.com/svg.image?\text{AeT}|y^{(i)}_{NB}\sim&space;N\left(145.33,2.89\right)"
+      height="30px">
+
+    <canvas id="aetChart"></canvas>
+    <div id="image-section" class="image-section" style="position: relative">
+      <script src="../scripts/another_data_point.js"></script>
+    </div>
+    <p>This page is here to illustrate that as I keep collecting measurements, the posterior distribution will keep
+      narrowing. However, I now have a better idea of my AeT based on the nose-breathing test, and I won't continue to
+      measure it this way. I will perform endurance training using 140 at my AeT. I have ordered a lactate testing kit,
+      which will allow me to collect more data, do different modeling, and get a more precise estimate of my AeT.</p>
+    <p><a href="../index.html">Home</a> | <a href="index.html">Previous</a> | <a href="blood_lactate_test.html">Next</a>
+    </p>
   </div>
-  <p>This page is here to illustrate that as I keep collecting measurements, the posterior distribution will keep
-    narrowing. However, I now have a better idea of my AeT based on the nose-breathing test, and I won't continue to
-    measure it this way. I will perform endurance training using 140 at my AeT. I have ordered a lactate testing kit,
-    which will allow me to collect more data, do different modeling, and get a more precise estimate of my AeT.</p>
 </body>
-<p><a href="../index.html">Home</a></p>
-<p><a href="index.html">Previous</a></p>
-<p><a href="blood_lactate_test.html">Next</a></p>
 
 </html>
