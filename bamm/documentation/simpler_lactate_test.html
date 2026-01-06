@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<head>
+  <title>Blood Lactate Test - Bayesian Assessment of Metabolic Markers - Hunter Merrill</title>
+  <meta name="description" content="A training journal in which Hunter uses blood lactate data and Bayesian inference to estimate my
+    aerobic and lactate thresholds.">
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://hrmerrill.github.io/bamm/documentation/simpler_lactate_test.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="nav-panel">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">BAMM Journal</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Documentation</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>
+      <strong>BAMM Documentation</strong>
+      A simpler blood lactate test.
+    </h2>
+    <!-- <canvas id="lactateChart"></canvas>
+    <div id="image-section" class="image-section" style="position: relative">
+      <script src="../data/samples.js"></script>
+      <script src="../data/fitted.js"></script>
+      <script src="../scripts/blood_lactate_test.js"></script>
+    </div> -->
+    <p>
+      I showed this journal to a friend who suggested a simpler framework. There are two changepoints we care about:
+      the lactate threshold, at which point the lactate in the blood begins accumulating over some baseline
+      value, and the aerobic threshold, at which point the lactate concentration begins to increase at an
+      even faster rate. These changepoints will be evident in the data as a change in slope of lactate
+      concentration with heart rate. This suggests a simple linear model with two changepoints.
+    </p>
+    <p>
+      Given this simpler framework, I can fit a simpler model: a piecewise linear model with two changepoints.
+      This is a well-established model with well-maintained software to fit it, e.g., the python package
+      <a href="https://pypi.org/project/piecewise-regression/">piecewise-regression</a>.
+    </p>
+    <p><a href="../index.html">Home</a> | <a href="another_data_point.html">Previous</a></p>
+  </div>
+</body>
+
+</html>
