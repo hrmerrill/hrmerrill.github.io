@@ -1,145 +1,116 @@
-const skillsLeft = document.getElementById("skills-left");
-const projectsLeft = document.getElementById("projects-left");
-const skillsBottom = document.getElementById("skills-bottom");
-const projectsBottom = document.getElementById("projects-bottom");
-const bio = document.getElementById("bio");
-const education = document.getElementById("education");
-const leftColumn = document.getElementById("left-column");
-const rightColumn = document.getElementById("right-column");
-const downloadLeft = document.getElementById("download-left");
-const downloadBottom = document.getElementById("download-bottom");
-const pageContainer = document.getElementById("page-container");
+// ===== Role Switcher =====
+const heroTitleEl = document.getElementById('hero-title');
+const bioTextEl   = document.getElementById('bio-text');
 
-function detectNarrow() {
-    const isNarrow1 = window.innerWidth <= 768;
-    const isNarrow2 = window.matchMedia("(max-width: 768px)").matches;
-    const isNarrow3 = document.documentElement.clientWidth <= 768;
-    return isNarrow1 || isNarrow2 || isNarrow3;
+const originalHeroTitle = 'Principal Data Scientist | Program Lead';
+const originalBioText   = bioTextEl ? bioTextEl.innerHTML : '';
+
+const roleConfig = {
+  ds: {
+    title: 'Data Scientist',
+    bio: 'Outcome-driven <strong>Data Scientist</strong> with 8+ years applying advanced probabilistic and deep learning methods to high-impact problems in agriculture and global health. Expert in Bayesian modeling, uncertainty quantification, and probabilistic forecasting. Author of multiple <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer">peer-reviewed publications</a> and <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer">patents</a>.',
+  },
+  eng: {
+    title: 'ML Engineer | Full-Stack Developer',
+    bio: 'Outcome-driven <strong>ML Engineer</strong> with end-to-end experience building and deploying production ML systems — from model development to cloud infrastructure (AWS, GCP, DigitalOcean), CI/CD pipelines, Docker containerization, and large-scale data processing with Apache Spark. Delivered real-world systems for agriculture and global health.',
+  },
+  lead: {
+    title: 'Technical Program Lead',
+    bio: 'Outcome-driven <strong>Technical Program Lead</strong> with 4+ years leading cross-functional agile teams to deliver scalable AI solutions for agriculture and global health. Defines scientific strategy, sets quarterly roadmaps, manages stakeholders, and aligns data science research with commercial business goals.',
+  },
 };
 
-// rearrange cards based on screen size
-function toggleCards() {
-    const isNarrow = detectNarrow();
-    if (isNarrow) {
-        skillsLeft.style.display = "none";
-        projectsLeft.style.display = "none";
-        skillsBottom.style.display = "block";
-        projectsBottom.style.display = "block";
-        downloadBottom.style.display = "block";
-        downloadLeft.style.display = "none";
+function setRole(role) {
+  // Update buttons
+  document.querySelectorAll('.role-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.role === role);
+  });
+
+  // Update URL
+  const url = new URL(window.location);
+  if (role === 'all') { url.searchParams.delete('role'); }
+  else { url.searchParams.set('role', role); }
+  history.pushState({}, '', url);
+
+  // Swap hero bio
+  if (role !== 'all' && roleConfig[role]) {
+    heroTitleEl.textContent = roleConfig[role].title;
+    bioTextEl.innerHTML     = roleConfig[role].bio;
+  } else {
+    heroTitleEl.textContent = originalHeroTitle;
+    bioTextEl.innerHTML     = originalBioText;
+  }
+
+  // Dim bullets that don't match this role
+  document.querySelectorAll('li[data-roles]').forEach(li => {
+    if (role === 'all') {
+      li.classList.remove('role-dimmed');
     } else {
-        skillsLeft.style.display = "block";
-        projectsLeft.style.display = "block";
-        skillsBottom.style.display = "none";
-        projectsBottom.style.display = "none";
-        downloadBottom.style.display = "none";
-        downloadLeft.style.display = "block";
-
-        bio.classList.add("margin-bottom");
-        education.classList.remove("margin-bottom");
+      const roles = li.dataset.roles.split(' ');
+      li.classList.toggle('role-dimmed', !roles.includes(role));
     }
-};
+  });
 
-// Add movement animation to cards when they come into view
-let options = { root: null, rootMargin: '0px', threshold: 0.01 };
-function bottomsUpCallbackFunc(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            if (entry.target.id != "name" && entry.target.id != "footer" &&
-                entry.target.id != "cv-web" && entry.target.id != "cv-text") {
-                entry.target.classList.add("animate-bottom");
-            }
-        }
-    })
-}
-let bottomsUpObserver = new IntersectionObserver(bottomsUpCallbackFunc, options);
-document.querySelectorAll(".container, .display-container").forEach(card => {
-    bottomsUpObserver.observe(card);
-});
-
-// Add color transition to tags when they come into view
-var iteration = 0;
-function colorTransitionCallbackFunc(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            iteration += 1;
-            if (entry.target.classList.contains("blue")) {
-                entry.target.classList.add("animate-pill-dark-shimmer");
-            } else if (entry.target.classList.contains("light-blue")) {
-                entry.target.classList.add("animate-pill-medium-shimmer");
-            } else if (entry.target.classList.contains("very-light-blue")) {
-                entry.target.classList.add("animate-pill-light-shimmer");
-            }
-            entry.target.classList.add(`delay-${iteration}`);
-        } else {
-            entry.target.classList.remove("animate-pill-dark-shimmer");
-            entry.target.classList.remove("animate-pill-medium-shimmer");
-            entry.target.classList.remove("animate-pill-light-shimmer");
-
-            let classNames = entry.target.className.split(' ');
-            classNames = classNames.filter(className => !className.startsWith("delay-"));
-            entry.target.className = classNames.join(' ');
-        }
-    });
-
-    // if max is hit or all tags out of view, reset iteration
-    const visibleTags = Array.from(entries).filter(entry => entry.isIntersecting);
-    if (iteration > 39 || visibleTags.length === 0) {
-        iteration = 0;
+  // Show/hide skill cards
+  document.querySelectorAll('.skill-card[data-roles]').forEach(card => {
+    if (role === 'all') {
+      card.classList.remove('role-hidden');
+    } else {
+      const roles = card.dataset.roles.split(' ');
+      card.classList.toggle('role-hidden', !roles.includes(role));
     }
+  });
 }
-let tagObserver = new IntersectionObserver(colorTransitionCallbackFunc, options);
-document.querySelectorAll(".tag.round-xlarge").forEach(card => {
-    tagObserver.observe(card);
+
+// Expose for inline onclick handlers (module scope ≠ global)
+window.setRole = setRole;
+
+// ===== Collapsible Experience Entries =====
+function toggleEntry(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+  const wrap = document.getElementById(btn.dataset.target);
+  wrap.classList.toggle('open', !expanded);
+}
+
+window.toggleEntry = toggleEntry;
+
+// ===== Active Nav Link on Scroll =====
+const sections  = document.querySelectorAll('main section[id]');
+const navLinks  = document.querySelectorAll('.nav-link');
+
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(s => navObserver.observe(s));
+
+// ===== Fade-in on Scroll =====
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.tl-card, .skill-card, .info-card, .edu-entry').forEach(el => {
+  el.classList.add('fade-target');
+  fadeObserver.observe(el);
 });
 
-window.addEventListener("resize", toggleCards);
-document.addEventListener("DOMContentLoaded", toggleCards);
-
-window.addEventListener('beforeprint', () => {
-    const footer = document.getElementById("footer");
-    const sideFooter = document.getElementById("footer-left");
-
-    // Force layout to desktop mode (keep skills/projects on left)
-    skillsLeft.style.display = "block";
-    projectsLeft.style.display = "block";
-    skillsBottom.style.display = "none";
-    projectsBottom.style.display = "none";
-    downloadLeft.style.display = "none";
-    downloadBottom.style.display = "none";
-
-    // resize
-    pageContainer.style.maxWidth = "1600px";
-
-    // resize font
-    document.body.style.fontSize = "12px";
-
-    // Hide the footer
-    footer.style.display = "none";
-
-    // Move Education to left column under Bio
-    bio.classList.add("margin-bottom");
-    bio.insertAdjacentElement('afterend', education);
-    education.classList.add("margin-bottom");
-
-    // Show the side footer (without resizing height)
-    sideFooter.style.display = "block";
-    sideFooter.style.height = "auto";
-});
-
-window.addEventListener('afterprint', () => {
-    const footer = document.getElementById("footer");
-    const sideFooter = document.getElementById("footer-left");
-    const serviceTop = document.getElementById("service-top");
-
-    // Move Education back to right column under Service
-    serviceTop.insertAdjacentElement('afterend', education);
-
-    leftColumn.style.width = "33.333333%";
-    rightColumn.style.width = "66.666666%";
-    footer.style.display = "block";
-    sideFooter.style.display = "none";
-    document.body.style.fontSize = "15px";
-    pageContainer.style.maxWidth = "1400px";
-    toggleCards();
+// ===== Apply ?role= query param on load =====
+document.addEventListener('DOMContentLoaded', () => {
+  const params      = new URLSearchParams(window.location.search);
+  const initialRole = params.get('role');
+  if (initialRole && roleConfig[initialRole]) {
+    setRole(initialRole);
+  }
 });
