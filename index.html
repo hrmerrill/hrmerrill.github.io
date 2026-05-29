@@ -60,13 +60,26 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#education" class="nav-link">Education</a>
       </div>
-      <div class="role-switcher" role="group" aria-label="View resume as">
-        <button class="role-btn active" data-role="all" onclick="setRole('all')">All</button>
-        <button class="role-btn" data-role="ds" onclick="setRole('ds')"><i class="fa fa-flask"></i> Data
-          Scientist</button>
-        <button class="role-btn" data-role="mle" onclick="setRole('mle')"><i class="fa fa-cog"></i> ML Engineer</button>
-        <button class="role-btn" data-role="lead" onclick="setRole('lead')"><i class="fa fa-users"></i> Program
-          Lead</button>
+      <div class="role-switcher-container">
+        <!-- Sleek Recruiter Tooltip -->
+        <div id="recruiter-tooltip" class="recruiter-tooltip" role="tooltip" aria-hidden="true">
+          <div class="tooltip-content">
+            <span class="tooltip-emoji">💡</span>
+            <span><strong>Tip:</strong> Click a role to focus my experience and skills.</span>
+          </div>
+          <button class="tooltip-close" aria-label="Dismiss tip" onclick="dismissTooltip(event)">&times;</button>
+          <div class="tooltip-arrow"></div>
+        </div>
+
+        <div class="role-switcher" role="group" aria-label="View resume as">
+          <button class="role-btn active" data-role="all" onclick="setRole('all')">All</button>
+          <button class="role-btn" data-role="ds" onclick="setRole('ds')"><i class="fa fa-flask"></i> Data
+            Scientist</button>
+          <button class="role-btn" data-role="mle" onclick="setRole('mle')"><i class="fa fa-cog"></i> ML
+            Engineer</button>
+          <button class="role-btn" data-role="lead" onclick="setRole('lead')"><i class="fa fa-users"></i> Program
+            Lead</button>
+        </div>
       </div>
     </div>
   </nav>

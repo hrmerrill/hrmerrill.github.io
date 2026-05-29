@@ -20,7 +20,23 @@ const roleConfig = {
   },
 };
 
+function dismissTooltip(event) {
+  if (event) {
+    event.stopPropagation();
+  }
+  const tooltip = document.getElementById('recruiter-tooltip');
+  if (tooltip) {
+    tooltip.classList.remove('show');
+    localStorage.setItem('recruiter_tip_dismissed', 'true');
+  }
+}
+
+window.dismissTooltip = dismissTooltip;
+
 function setRole(role) {
+  // Auto-dismiss recruiter tip on interaction
+  dismissTooltip();
+
   // Update buttons
   document.querySelectorAll('.role-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.role === role);
@@ -108,11 +124,19 @@ document.querySelectorAll('.tl-card, .skill-card, .info-card, .edu-entry').forEa
   fadeObserver.observe(el);
 });
 
-// ===== Apply ?role= query param on load =====
+// ===== Apply ?role= query param on load & show recruiter tip =====
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const initialRole = params.get('role');
   if (initialRole && roleConfig[initialRole]) {
     setRole(initialRole);
   }
+
+  // Gracefully show recruiter tip after page loading animation finishes
+  setTimeout(() => {
+    const tooltip = document.getElementById('recruiter-tooltip');
+    if (tooltip && !localStorage.getItem('recruiter_tip_dismissed')) {
+      tooltip.classList.add('show');
+    }
+  }, 500);
 });
