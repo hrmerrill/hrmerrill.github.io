@@ -1,440 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Hunter Merrill — Data Scientist & ML Engineer</title>
+  <title>Hunter Merrill — Data Scientist | ML Engineer | Program Lead</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Principal Data Scientist | ML Engineer | Program Lead. 8+ years in Bayesian modeling, deep learning, and probabilistic forecasting for agriculture and global health.">
+  <meta name="description"
+    content="Data Scientist | ML Engineer | Program Lead. 9+ years in Bayesian modeling, deep learning, and probabilistic forecasting for agriculture and global health.">
   <link rel="canonical" href="https://hrmerrill.github.io/">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
 
-<!-- ===== HERO ===== -->
-<header id="hero">
-  <div class="hero-inner">
-    <img src="resources/headshot.jpeg" alt="Hunter Merrill" class="hero-avatar">
-    <div class="hero-text">
-      <h1 class="hero-name">Hunter R. Merrill, PhD</h1>
-      <div class="hero-title-line">
-        <span id="hero-title">Principal Data Scientist | Program Lead</span>
+  <!-- ===== HERO ===== -->
+  <header id="hero">
+    <div class="hero-inner">
+      <img src="resources/headshot.jpeg" alt="Hunter Merrill" class="hero-avatar">
+      <div class="hero-text">
+        <h1 class="hero-name">Hunter R. Merrill, PhD</h1>
+        <div class="hero-title-line">
+          <span id="hero-title">Data Scientist | ML Engineer | Program Lead</span>
+        </div>
+        <p id="bio-text" class="hero-bio">
+          I specialize in data-driven decision support and risk mitigation with evidence-based tools and software. I
+          have extensive experience managing the full research cycle, from
+          experimental design to the delivery of peer-reviewed findings and AI-based
+          decision-support tools. My work spans global health, environmental sustainability,
+          and precision agriculture.
+        </p>
+        <div class="hero-links">
+          <a href="mailto:hunter.r.merrill@gmail.com" class="hero-link"><i
+              class="fa fa-envelope"></i>hunter.r.merrill@gmail.com</a>
+          <a href="https://www.linkedin.com/in/hunter-r-merrill-phd-3996b639/" target="_blank" rel="noopener noreferrer"
+            class="hero-link"><i class="fa fa-linkedin-square"></i>LinkedIn</a>
+          <span class="hero-link"><i class="fa fa-map-marker"></i>Columbus, OH</span>
+        </div>
+        <div class="hero-actions">
+          <a href="resources/hunter_merrill_resume_general.pdf" download class="btn-primary"><i
+              class="fa fa-download"></i>Download CV</a>
+          <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer"
+            class="btn-ghost"><i class="fa fa-graduation-cap"></i>Publications</a>
+          <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer"
+            class="btn-ghost"><i class="fa fa-lightbulb-o"></i>Patents</a>
+        </div>
       </div>
-      <p id="bio-text" class="hero-bio">
-        Outcome-driven leader with <strong>8+ years</strong> in data science and <strong>4+ years</strong> leading cross-functional teams — delivering scalable AI solutions for precision agriculture and global health. Expert in Bayesian modeling, deep learning, and probabilistic forecasting. Author of multiple <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer">peer-reviewed publications</a> and <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer">patents</a>.
-      </p>
-      <div class="hero-links">
-        <a href="mailto:hmerrill12@gmail.com" class="hero-link"><i class="fa fa-envelope"></i>hmerrill12@gmail.com</a>
-        <a href="https://www.linkedin.com/in/hunter-r-merrill-phd-3996b639/" target="_blank" rel="noopener noreferrer" class="hero-link"><i class="fa fa-linkedin-square"></i>LinkedIn</a>
-        <span class="hero-link"><i class="fa fa-map-marker"></i>Columbus, OH</span>
+    </div>
+  </header>
+
+  <!-- ===== STICKY NAV ===== -->
+  <nav id="site-nav">
+    <div class="nav-inner">
+      <div class="nav-links">
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#service" class="nav-link">Service</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
       </div>
-      <div class="hero-actions">
-        <a href="resources/hunter_merrill_cv_text.pdf" download class="btn-primary"><i class="fa fa-download"></i>Download CV</a>
-        <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer" class="btn-ghost"><i class="fa fa-graduation-cap"></i>Publications</a>
-        <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer" class="btn-ghost"><i class="fa fa-lightbulb-o"></i>Patents</a>
+      <div class="role-switcher" role="group" aria-label="View resume as">
+        <button class="role-btn active" data-role="all" onclick="setRole('all')">All</button>
+        <button class="role-btn" data-role="ds" onclick="setRole('ds')"><i class="fa fa-flask"></i> Data
+          Scientist</button>
+        <button class="role-btn" data-role="mle" onclick="setRole('mle')"><i class="fa fa-cog"></i> ML Engineer</button>
+        <button class="role-btn" data-role="lead" onclick="setRole('lead')"><i class="fa fa-users"></i> Program
+          Lead</button>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<!-- ===== STICKY NAV ===== -->
-<nav id="site-nav">
-  <div class="nav-inner">
-    <div class="nav-links">
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#service" class="nav-link">Service & Projects</a>
-      <a href="#education" class="nav-link">Education</a>
-    </div>
-    <div class="role-switcher" role="group" aria-label="View resume as">
-      <button class="role-btn active" data-role="all"  onclick="setRole('all')">All</button>
-      <button class="role-btn"        data-role="ds"   onclick="setRole('ds')"><i class="fa fa-flask"></i> Data Scientist</button>
-      <button class="role-btn"        data-role="eng"  onclick="setRole('eng')"><i class="fa fa-cog"></i> ML Engineer</button>
-      <button class="role-btn"        data-role="lead" onclick="setRole('lead')"><i class="fa fa-users"></i> Program Lead</button>
-    </div>
-  </div>
-</nav>
+  <!-- ===== MAIN ===== -->
+  <main>
 
-<!-- ===== MAIN ===== -->
-<main>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa fa-briefcase"></i>Experience</h2>
+        <div class="section-line"></div>
+      </div>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header">
-      <h2 class="section-title"><i class="fa fa-briefcase"></i>Experience</h2>
-      <div class="section-line"></div>
-    </div>
+      <div class="timeline">
 
-    <div class="timeline">
-
-      <!-- Taimaka -->
-      <div class="timeline-entry">
-        <div class="tl-gutter"><div class="tl-dot accent"></div></div>
-        <div class="tl-card">
-          <button class="entry-toggle" aria-expanded="true" data-target="taimaka-body" onclick="toggleEntry(this)">
-            <div class="entry-toggle-left">
-              <span class="entry-title">Program Improvement Fellow</span>
-              <span class="entry-company">Taimaka</span>
-              <span class="entry-sub">Global health · Gombe, Nigeria</span>
-            </div>
-            <div class="entry-toggle-right">
-              <span class="entry-date">Sept – Oct 2025</span>
-              <div class="role-badges">
-                <span class="badge badge-ds">DS</span>
-                <span class="badge badge-eng">Eng</span>
-                <span class="badge badge-lead">Lead</span>
+        <!-- Taimaka -->
+        <div class="timeline-entry">
+          <div class="tl-gutter">
+            <div class="tl-dot accent"></div>
+          </div>
+          <div class="tl-card">
+            <button class="entry-toggle" aria-expanded="true" data-target="taimaka-body" onclick="toggleEntry(this)">
+              <div class="entry-toggle-left">
+                <span class="entry-title">Program Improvement Fellow</span>
+                <span class="entry-company">Taimaka</span>
+                <span class="entry-sub">Global health · Gombe, Nigeria</span>
               </div>
-              <i class="fa fa-chevron-down chevron"></i>
-            </div>
-          </button>
-          <div class="entry-body-wrap open" id="taimaka-body">
-            <div class="entry-body-inner">
-              <p class="entry-intro">Improved pediatric patient outcomes and reduced malnutrition treatment cost in Gombe, Nigeria.</p>
-              <ul>
-                <li data-roles="ds eng"><a href="https://taimaka.org/blog/facial-recognition-for-cmam-patients-in-nigeria" target="_blank" rel="noopener noreferrer">Built a facial recognition model</a> with 99% true acceptance/rejection rates and 97% top-three accuracy.</li>
-                <li data-roles="eng">Built and deployed a mobile app for contactless on-device biometric identification.</li>
-                <li data-roles="eng">Built and automated a backend system to update biometric templates.</li>
-                <li data-roles="eng">Integrated GCP OAuth 2.0 for secure user authentication in the mobile biometric app.</li>
-                <li data-roles="lead">Collaborated with field teams and local stakeholders to pilot biometric identification, ensuring ethical and effective implementation in low-resource settings.</li>
-                <li data-roles="ds">Discovered a cohort of repeat patients and performed analyses to improve treatment protocols for relapse cases.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Climate LLC / Bayer (multi-role) -->
-      <div class="timeline-entry">
-        <div class="tl-gutter"><div class="tl-dot accent"></div></div>
-        <div class="tl-card">
-          <div class="company-header">
-            <span class="company-name">Climate LLC / Bayer</span>
-            <span class="company-tenure">May 2017 – Present</span>
-          </div>
-
-          <!-- Principal DS -->
-          <button class="role-toggle" aria-expanded="true" data-target="bayer-principal" onclick="toggleEntry(this)">
-            <div class="role-toggle-left">
-              <span class="role-toggle-title">Principal Data Scientist</span>
-              <span class="role-toggle-meta">Sept 2024 – Present &nbsp;<span class="current-pill">Current</span></span>
-            </div>
-            <div class="role-toggle-right">
-              <div class="role-badges">
-                <span class="badge badge-ds">DS</span>
-                <span class="badge badge-eng">Eng</span>
-                <span class="badge badge-lead">Lead</span>
+              <div class="entry-toggle-right">
+                <span class="entry-date">Sept – Oct 2025</span>
+                <div class="role-badges">
+                  <span class="badge badge-ds">DS</span>
+                  <span class="badge badge-mle">MLE</span>
+                  <span class="badge badge-lead">Lead</span>
+                </div>
+                <i class="fa fa-chevron-down chevron"></i>
               </div>
-              <i class="fa fa-chevron-down chevron"></i>
-            </div>
-          </button>
-          <div class="entry-body-wrap open" id="bayer-principal">
-            <div class="entry-body-inner">
-              <p class="entry-intro">Lead agile teams delivering scalable AI solutions for precision agriculture — influencing strategic direction, defining quarterly milestones, and aligning engineering with business goals.</p>
-              <ul>
-                <li data-roles="ds eng">Improved field boundary management by developing and deploying a QGIS plugin; currently leading a SAM-based farmer-facing segmentation tool.</li>
-                <li data-roles="ds eng">Automated practice change evidence verification by deploying image- and text-classification neural networks.</li>
-                <li data-roles="ds eng">Explored compliant AI by fine-tuning and in-house hosting RAG-based LLM frameworks for carbon market registry queries.</li>
-                <li data-roles="eng">Leveraged AWS (S3, EC2, ECR) and GCP (GCS, BigQuery) for scalable data storage, compute, and containerized model deployment.</li>
-                <li data-roles="eng">Built and maintained CI/CD pipelines with Docker containerization, automating unit testing, code coverage, formatting, and production deployment.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Lead DS -->
-          <button class="role-toggle" aria-expanded="false" data-target="bayer-lead" onclick="toggleEntry(this)">
-            <div class="role-toggle-left">
-              <span class="role-toggle-title">Lead Data Scientist</span>
-              <span class="role-toggle-meta">Nov 2020 – Sept 2024</span>
-            </div>
-            <div class="role-toggle-right">
-              <div class="role-badges">
-                <span class="badge badge-ds">DS</span>
-                <span class="badge badge-lead">Lead</span>
+            </button>
+            <div class="entry-body-wrap open" id="taimaka-body">
+              <div class="entry-body-inner">
+                <p class="entry-intro">I improved pediatric patient outcomes and reduced malnutrition treatment cost in
+                  Gombe, Nigeria.</p>
+                <ul>
+                  <li data-roles="ds mle"><a href="https://taimaka.org/blog/patient-identification-system"
+                      target="_blank" rel="noopener noreferrer">Built a facial recognition model</a> with 99% true
+                    acceptance/rejection
+                    rates and 97% top-three accuracy.</li>
+                  <li data-roles="ds">Forecasted the decay of facial recognition accuracy as malnourished children
+                    recover and grow.</li>
+                  <li data-roles="mle">Built and deployed a mobile app for contactless on-device biometric
+                    identification.</li>
+                  <li data-roles="mle">Built and automated a backend system to update biometric templates.</li>
+                  <li data-roles="mle">Integrated GCP OAuth 2.0 for secure user authentication in the mobile biometric
+                    app.</li>
+                  <li data-roles="lead">Collaborated with field teams and local stakeholders to pilot biometric
+                    identification, ensuring ethical and effective implementation in low-resource settings.</li>
+                  <li data-roles="lead ds">Discovered a cohort of repeat patients and performed analyses to improve
+                    treatment
+                    protocols for relapse cases.</li>
+                  <li data-roles="ds">Forecasted anthropometric recovery trajectories for malnourished children to
+                    identify those most at-risk of nonresponse and death.
+                  <li data-roles="lead">Translated research findings into operational improvements, identifying key
+                    implications for
+                    malnourished patient protocols and improving long-term recovery.
+                  </li>
+                  </li>
+                </ul>
               </div>
-              <i class="fa fa-chevron-down chevron"></i>
-            </div>
-          </button>
-          <div class="entry-body-wrap" id="bayer-lead">
-            <div class="entry-body-inner">
-              <p class="entry-intro">Led agile teams delivering predictive models for crop diseases, defining scientific strategy and aligning research with commercial goals.</p>
-              <ul>
-                <li data-roles="ds">Developed and deployed a deep learning Gaussian process model for jointly forecasting multiple crop diseases.</li>
-                <li data-roles="lead">Improved data collection efficiency by defining a data valuation strategy and hiring two contractors to execute on it.</li>
-                <li data-roles="lead">Identified and addressed risks of collecting redundant data across programs.</li>
-                <li data-roles="eng">Processed large-scale agricultural datasets for model training using Apache Spark for distributed computation.</li>
-              </ul>
             </div>
           </div>
+        </div>
 
-          <!-- Senior DS -->
-          <button class="role-toggle" aria-expanded="false" data-target="bayer-senior" onclick="toggleEntry(this)">
-            <div class="role-toggle-left">
-              <span class="role-toggle-title">Senior Data Scientist</span>
-              <span class="role-toggle-meta">April 2018 – Nov 2020</span>
+        <!-- Climate LLC / Bayer (multi-role) -->
+        <div class="timeline-entry">
+          <div class="tl-gutter">
+            <div class="tl-dot accent"></div>
+          </div>
+          <div class="tl-card">
+            <div class="company-header">
+              <span class="company-name">Climate LLC / Bayer</span>
+              <span class="company-tenure">May 2017 – Present</span>
             </div>
-            <div class="role-toggle-right">
-              <div class="role-badges">
-                <span class="badge badge-ds">DS</span>
-                <span class="badge badge-lead">Lead</span>
+
+            <!-- Principal DS -->
+            <button class="role-toggle" aria-expanded="true" data-target="bayer-principal" onclick="toggleEntry(this)">
+              <div class="role-toggle-left">
+                <span class="role-toggle-title">Principal Data Scientist</span>
+                <span class="role-toggle-meta">Sept 2024 – Present &nbsp;<span
+                    class="current-pill">Current</span></span>
               </div>
-              <i class="fa fa-chevron-down chevron"></i>
-            </div>
-          </button>
-          <div class="entry-body-wrap" id="bayer-senior">
-            <div class="entry-body-inner">
-              <ul>
-                <li data-roles="ds">Created in-season wheat disease forecasts using probabilistic deep learning models.</li>
-                <li data-roles="ds">Improved crop yield models by creating deep learning embeddings of high-dimensional environmental data.</li>
-                <li data-roles="lead ds">Mentored an intern to develop probabilistic deep learning models forecasting soybean yield over long lead times.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Geospatial Statistician -->
-          <button class="role-toggle" aria-expanded="false" data-target="bayer-geo" onclick="toggleEntry(this)">
-            <div class="role-toggle-left">
-              <span class="role-toggle-title">Geospatial Statistician</span>
-              <span class="role-toggle-meta">May 2017 – April 2018</span>
-            </div>
-            <div class="role-toggle-right">
-              <div class="role-badges">
-                <span class="badge badge-ds">DS</span>
-                <span class="badge badge-eng">Eng</span>
+              <div class="role-toggle-right">
+                <div class="role-badges">
+                  <span class="badge badge-ds">DS</span>
+                  <span class="badge badge-mle">MLE</span>
+                  <span class="badge badge-lead">Lead</span>
+                </div>
+                <i class="fa fa-chevron-down chevron"></i>
               </div>
-              <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="entry-body-wrap open" id="bayer-principal">
+              <div class="entry-body-inner">
+                <p class="entry-intro">I lead agile teams delivering scalable AI solutions for precision agriculture —
+                  influencing strategic direction, defining quarterly milestones, and aligning research and engineering
+                  deliverables with business
+                  goals.</p>
+                <ul>
+                  <li data-roles="lead">Led cross-functional research teams to develop and deploy AI-based remote
+                    sensing, image classification, and LLM frameworks supporting regenerative agriculture.</li>
+                  <li data-roles="ds">Designed advanced AI models for agronomic management practice verification to
+                    support regenerative agriculture business operations.</li>
+                  <li data-roles="mle">Deployed and scaled satellite imagery-based predictive pipelines in
+                    cloud environments to support high-throughput regenerative agriculture operations.</li>
+                  <li data-roles="lead">Managed the strategic roadmap and delivery of predictive modeling
+                    systems, enabling risk assessment tools for farmers and breeders.</li>
+                  <li data-roles="ds">Developed deep learning architectures for joint multi-disease prediction and crop
+                    yield forecasting to enable granular, probabilistic risk assessment.</li>
+                  <li data-roles="mle">Engineered scalable production pipelines to process geospatial/environmental
+                    data, train deep learning models, and serve disease and yield forecasts.</li>
+                  <li data-roles="lead">Translated complex statistical forecasts and uncertainty metrics into actionable
+                    business strategies for non-technical leadership through high-level presentations and reports.</li>
+                  <li data-roles="ds">Authored technical reports and built dashboards that
+                    translate performance metrics into intuitive insights and business value.</li>
+                  <li data-roles="mle">Implemented visualization pipelines to securely and
+                    reliably deliver predictive forecasts to business decision-makers.</li>
+                </ul>
+              </div>
             </div>
-          </button>
-          <div class="entry-body-wrap" id="bayer-geo">
-            <div class="entry-body-inner">
-              <p class="entry-intro">Identified crop nutrient deficiencies in soil by developing predictive statistical models using satellite imagery.</p>
+
+            <!-- Lead DS -->
+            <button class="role-toggle" aria-expanded="false" data-target="bayer-lead" onclick="toggleEntry(this)">
+              <div class="role-toggle-left">
+                <span class="role-toggle-title">Lead Data Scientist</span>
+                <span class="role-toggle-meta">Nov 2020 – Sept 2024</span>
+              </div>
+              <div class="role-toggle-right">
+                <div class="role-badges">
+                  <span class="badge badge-ds">DS</span>
+                  <span class="badge badge-mle">MLE</span>
+                  <span class="badge badge-lead">Lead</span>
+                </div>
+                <i class="fa fa-chevron-down chevron"></i>
+              </div>
+            </button>
+            <div class="entry-body-wrap" id="bayer-lead">
+              <div class="entry-body-inner">
+                <p class="entry-intro">I led agile teams delivering predictive models for crop diseases, defining
+                  scientific strategy and aligning research with commercial goals.</p>
+                <ul>
+                  <li data-roles="ds">Developed and deployed a deep learning Gaussian process model for jointly
+                    forecasting multiple crop diseases.</li>
+                  <li data-roles="lead">Improved data collection efficiency by defining a data valuation strategy and
+                    hiring two contractors to execute on it.</li>
+                  <li data-roles="lead">Identified and addressed risks of collecting redundant data across programs.
+                  </li>
+                  <li data-roles="ds mle">Processed large-scale agricultural datasets for model training using Apache
+                    Spark
+                    for distributed computation.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Senior DS -->
+            <button class="role-toggle" aria-expanded="false" data-target="bayer-senior" onclick="toggleEntry(this)">
+              <div class="role-toggle-left">
+                <span class="role-toggle-title">Senior Data Scientist</span>
+                <span class="role-toggle-meta">April 2018 – Nov 2020</span>
+              </div>
+              <div class="role-toggle-right">
+                <div class="role-badges">
+                  <span class="badge badge-ds">DS</span>
+                  <span class="badge badge-lead">Lead</span>
+                </div>
+                <i class="fa fa-chevron-down chevron"></i>
+              </div>
+            </button>
+            <div class="entry-body-wrap" id="bayer-senior">
+              <div class="entry-body-inner">
+                <ul>
+                  <li data-roles="ds">Created in-season wheat disease forecasts using probabilistic deep learning
+                    models.</li>
+                  <li data-roles="ds">Improved crop yield models by creating deep learning embeddings of
+                    high-dimensional environmental data.</li>
+                  <li data-roles="lead ds">Mentored an intern to develop probabilistic deep learning models forecasting
+                    soybean yield over long lead times.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Geospatial Statistician -->
+            <button class="role-toggle" aria-expanded="false" data-target="bayer-geo" onclick="toggleEntry(this)">
+              <div class="role-toggle-left">
+                <span class="role-toggle-title">Geospatial Statistician</span>
+                <span class="role-toggle-meta">May 2017 – April 2018</span>
+              </div>
+              <div class="role-toggle-right">
+                <div class="role-badges">
+                  <span class="badge badge-ds">DS</span>
+                </div>
+                <i class="fa fa-chevron-down chevron"></i>
+              </div>
+            </button>
+            <div class="entry-body-wrap" id="bayer-geo">
+              <div class="entry-body-inner">
+                <ul>
+                  <li data-roles="ds">Identified crop nutrient deficiencies in soil by developing predictive
+                    statistical models using satellite imagery.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Freelance -->
-      <div class="timeline-entry">
-        <div class="tl-gutter"><div class="tl-dot"></div></div>
-        <div class="tl-card">
-          <button class="entry-toggle" aria-expanded="false" data-target="freelance-body" onclick="toggleEntry(this)">
-            <div class="entry-toggle-left">
-              <span class="entry-title">Grant Review Panel Member</span>
-              <span class="entry-company">USDA · Freelance</span>
-              <span class="entry-sub">Data Science for Food and Agriculture Systems</span>
-            </div>
-            <div class="entry-toggle-right">
-              <span class="entry-date">2024 & 2025</span>
-              <div class="role-badges"><span class="badge badge-lead">Lead</span></div>
-              <i class="fa fa-chevron-down chevron"></i>
-            </div>
-          </button>
-          <div class="entry-body-wrap" id="freelance-body">
-            <div class="entry-body-inner">
-              <p class="entry-intro">Reviewed grant proposals for the USDA's Data Science for Food and Agriculture Systems awards.</p>
+        <!-- Freelance -->
+        <div class="timeline-entry">
+          <div class="tl-gutter">
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <button class="entry-toggle" aria-expanded="false" data-target="freelance-body" onclick="toggleEntry(this)">
+              <div class="entry-toggle-left">
+                <span class="entry-title">Grant Review Panel Member</span>
+                <span class="entry-company">USDA · Freelance</span>
+                <span class="entry-sub">Data Science for Food and Agriculture Systems</span>
+              </div>
+              <div class="entry-toggle-right">
+                <span class="entry-date">2024 & 2025</span>
+                <div class="role-badges"><span class="badge badge-lead">Lead</span></div>
+                <i class="fa fa-chevron-down chevron"></i>
+              </div>
+            </button>
+            <div class="entry-body-wrap" id="freelance-body">
+              <div class="entry-body-inner">
+                <p class="entry-intro">Reviewed grant proposals for the USDA's Data Science for Food and Agriculture
+                  Systems awards.</p>
+              </div>
             </div>
           </div>
         </div>
+
+      </div><!-- /timeline -->
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa fa-star"></i>Skills</h2>
+        <div class="section-line"></div>
       </div>
+      <div class="skills-grid">
 
-    </div><!-- /timeline -->
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header">
-      <h2 class="section-title"><i class="fa fa-star"></i>Skills</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="skills-grid">
-
-      <div class="skill-card" data-roles="ds">
-        <div class="skill-card-header">
-          <div class="skill-icon si-research"><i class="fa fa-flask"></i></div>
-          <span class="skill-card-title">Research & Methodology</span>
+        <div class="skill-card" data-roles="ds">
+          <div class="skill-card-header">
+            <div class="skill-icon si-research"><i class="fa fa-flask"></i></div>
+            <span class="skill-card-title">Research & Methodology</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Research design</span>
+            <span class="skill-tag">Probabilistic forecasting</span>
+            <span class="skill-tag">Uncertainty quantification</span>
+            <span class="skill-tag">Deep learning</span>
+            <span class="skill-tag">Predictive modeling</span>
+            <span class="skill-tag">Bayesian inference</span>
+            <span class="skill-tag">Generative modeling</span>
+            <span class="skill-tag">Causal inference</span>
+          </div>
         </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Research design</span>
-          <span class="skill-tag">Probabilistic forecasting</span>
-          <span class="skill-tag">Uncertainty quantification</span>
-          <span class="skill-tag">Deep learning</span>
-          <span class="skill-tag">Predictive modeling</span>
-          <span class="skill-tag">Bayesian inference</span>
-          <span class="skill-tag">Generative modeling</span>
-          <span class="skill-tag">Causal inference</span>
+
+        <div class="skill-card" data-roles="lead">
+          <div class="skill-card-header">
+            <div class="skill-icon si-people"><i class="fa fa-users"></i></div>
+            <span class="skill-card-title">People & Program Management</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">End-to-end research cycles</span>
+            <span class="skill-tag">Research analyst coordination</span>
+            <span class="skill-tag">Stakeholder management</span>
+            <span class="skill-tag">Grant / project evaluation</span>
+            <span class="skill-tag">Remote team leadership</span>
+          </div>
         </div>
+
+        <div class="skill-card" data-roles="ds lead">
+          <div class="skill-card-header">
+            <div class="skill-icon si-comms"><i class="fa fa-comments"></i></div>
+            <span class="skill-card-title">Communication</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Technical report writing</span>
+            <span class="skill-tag">Academic publishing</span>
+            <span class="skill-tag">Translating results for stakeholders</span>
+            <span class="skill-tag">UI/UX for decision-support tools</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-roles="ds mle">
+          <div class="skill-card-header">
+            <div class="skill-icon si-tech"><i class="fa fa-code"></i></div>
+            <span class="skill-card-title">Tech Stack</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyMC</span>
+            <span class="skill-tag">Scikit-Learn</span>
+            <span class="skill-tag">EconML</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Apache Spark</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">QGIS</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-roles="mle">
+          <div class="skill-card-header">
+            <div class="skill-icon si-cloud"><i class="fa fa-cloud"></i></div>
+            <span class="skill-card-title">Cloud & Infrastructure</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">GCP</span>
+            <span class="skill-tag">DigitalOcean</span>
+            <span class="skill-tag">CI/CD pipelines</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="skill-card" data-roles="lead">
-        <div class="skill-card-header">
-          <div class="skill-icon si-people"><i class="fa fa-users"></i></div>
-          <span class="skill-card-title">People & Program Management</span>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">End-to-end research cycles</span>
-          <span class="skill-tag">Research analyst coordination</span>
-          <span class="skill-tag">Stakeholder management</span>
-          <span class="skill-tag">Grant / project evaluation</span>
-          <span class="skill-tag">Remote team leadership</span>
-        </div>
+    <!-- SERVICE -->
+    <section id="service">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa fa-heart"></i>Service</h2>
+        <div class="section-line"></div>
       </div>
+      <div class="cards-grid">
 
-      <div class="skill-card" data-roles="ds lead">
-        <div class="skill-card-header">
-          <div class="skill-icon si-comms"><i class="fa fa-comments"></i></div>
-          <span class="skill-card-title">Communication</span>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa fa-heart"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">Taimaka</div>
+            <div class="info-card-meta">May 2025 – Present · Volunteer</div>
+            <p class="info-card-desc">Reducing nonresponse and mortality rates of malnourished Nigerian children through
+              predictive model development, deployment, and automation. Assisting with cost-effectiveness analyses.</p>
+          </div>
         </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Technical report writing</span>
-          <span class="skill-tag">Academic publishing</span>
-          <span class="skill-tag">Translating results for stakeholders</span>
-          <span class="skill-tag">UI/UX for decision-support tools</span>
-        </div>
-      </div>
 
-      <div class="skill-card" data-roles="ds eng">
-        <div class="skill-card-header">
-          <div class="skill-icon si-tech"><i class="fa fa-code"></i></div>
-          <span class="skill-card-title">Tech Stack</span>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">PyMC</span>
-          <span class="skill-tag">Scikit-Learn</span>
-          <span class="skill-tag">EconML</span>
-          <span class="skill-tag">R</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Apache Spark</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Bash</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">QGIS</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-roles="eng">
-        <div class="skill-card-header">
-          <div class="skill-icon si-cloud"><i class="fa fa-cloud"></i></div>
-          <span class="skill-card-title">Cloud & Infrastructure</span>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">AWS (S3, EC2, ECR)</span>
-          <span class="skill-tag">GCP (GCS, BigQuery)</span>
-          <span class="skill-tag">DigitalOcean</span>
-          <span class="skill-tag">CI/CD pipelines</span>
-          <span class="skill-tag">Docker</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICE & PROJECTS -->
-  <section id="service">
-    <div class="section-header">
-      <h2 class="section-title"><i class="fa fa-heart"></i>Service & Projects</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="cards-grid">
-
-      <div class="info-card">
-        <div class="info-card-icon"><i class="fa fa-heart"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">Taimaka</div>
-          <div class="info-card-meta">May 2025 – Present · Volunteer</div>
-          <p class="info-card-desc">Reducing nonresponse and mortality rates of malnourished Nigerian children through predictive model development, deployment, and automation. Assisting with cost-effectiveness analyses.</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-card-icon"><i class="fa fa-university"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">UF ABE Advisory Board</div>
-          <div class="info-card-meta">Dec 2022 – Present · Advisor</div>
-          <p class="info-card-desc">Advising the University of Florida's Agricultural &amp; Biological Engineering department on mission strategy and curricula to ensure successful graduate placement.</p>
-        </div>
-      </div>
-
-      <a href="https://givingfol.io/" target="_blank" rel="noopener noreferrer" class="info-card info-card-link-card">
-        <div class="info-card-icon"><i class="fa fa-globe"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">Givingfolio <i class="fa fa-external-link link-icon"></i></div>
-          <div class="info-card-meta">Full-stack web app · DigitalOcean</div>
-          <p class="info-card-desc">Donation tracking webapp with database, backend, and frontend deployed on DigitalOcean.</p>
-        </div>
-      </a>
-
-      <a href="https://github.com/hrmerrill/kaggle-prediction-interval-birthweight" target="_blank" rel="noopener noreferrer" class="info-card info-card-link-card">
-        <div class="info-card-icon"><i class="fa fa-trophy"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">Kaggle Competition <i class="fa fa-external-link link-icon"></i></div>
-          <div class="info-card-meta">Prediction Interval Competition I</div>
-          <p class="info-card-desc">Birthweight prediction intervals using probabilistic deep learning.</p>
-        </div>
-      </a>
-
-      <a href="bamm/index.html" class="info-card info-card-link-card">
-        <div class="info-card-icon"><i class="fa fa-line-chart"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">Bayesian Metabolic Markers <i class="fa fa-external-link link-icon"></i></div>
-          <div class="info-card-meta">Personal Project · Training Journal</div>
-          <p class="info-card-desc">Bayesian inference framework for modeling metabolic markers from personal training data.</p>
-        </div>
-      </a>
-
-      <div class="info-card">
-        <div class="info-card-icon"><i class="fa fa-server"></i></div>
-        <div class="info-card-body">
-          <div class="info-card-title">Personal Infrastructure</div>
-          <div class="info-card-meta">DigitalOcean · Hobby Projects</div>
-          <p class="info-card-desc">VPN, load balancers, and serverless functions deployed on DigitalOcean.</p>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa fa-university"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">UF ABE Advisory Board</div>
+            <div class="info-card-meta">Dec 2022 – Present · Advisor</div>
+            <p class="info-card-desc">Advising the University of Florida's Agricultural &amp; Biological Engineering
+              department on mission strategy and curricula to ensure successful graduate placement.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="section-header">
-      <h2 class="section-title"><i class="fa fa-graduation-cap"></i>Education</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="edu-list">
-      <div class="edu-entry">
-        <div class="edu-left">
-          <span class="edu-degree">PhD, Agricultural and Biological Engineering</span>
-          <span class="edu-school">University of Florida</span>
-        </div>
-        <span class="edu-year">2014 – 2018</span>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa fa-code-fork"></i>Projects</h2>
+        <div class="section-line"></div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-left">
-          <span class="edu-degree">MStat, Statistics</span>
-          <span class="edu-school">University of Florida</span>
-        </div>
-        <span class="edu-year">2012 – 2014</span>
+      <div class="cards-grid">
+
+        <a href="https://givingfol.io/" target="_blank" rel="noopener noreferrer" class="info-card info-card-link-card">
+          <div class="info-card-icon"><i class="fa fa-globe"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">Givingfolio <i class="fa fa-external-link link-icon"></i></div>
+            <div class="info-card-meta">Full-stack web app · DigitalOcean</div>
+            <p class="info-card-desc">Donation tracking webapp with database, backend, and frontend deployed on
+              DigitalOcean.</p>
+          </div>
+        </a>
+
+        <a href="https://github.com/hrmerrill/kaggle-prediction-interval-birthweight" target="_blank"
+          rel="noopener noreferrer" class="info-card info-card-link-card">
+          <div class="info-card-icon"><i class="fa fa-trophy"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">Kaggle Competition <i class="fa fa-external-link link-icon"></i></div>
+            <div class="info-card-meta">Prediction Interval Competition I</div>
+            <p class="info-card-desc">Birthweight prediction intervals using probabilistic deep learning.</p>
+          </div>
+        </a>
+
+        <a href="bamm/index.html" class="info-card info-card-link-card">
+          <div class="info-card-icon"><i class="fa fa-line-chart"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">Bayesian Metabolic Markers <i class="fa fa-external-link link-icon"></i></div>
+            <div class="info-card-meta">Personal Project · Training Journal</div>
+            <p class="info-card-desc">Bayesian inference framework for modeling metabolic markers from personal training
+              data.</p>
+          </div>
+        </a>
+
+        <a href="https://rapidapi.com/user/mechanicianapis" target="_blank" rel="noopener noreferrer"
+          class="info-card info-card-link-card">
+          <div class="info-card-icon"><i class="fa fa-server"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">Micro-Service APIs <i class="fa fa-external-link link-icon"></i></div>
+            <div class="info-card-meta">Serverless · Hobby Projects</div>
+            <p class="info-card-desc"> Developer tools spanning multiple domains and hosted on RapidAPI.</p>
+          </div>
+        </a>
+
+        <a href="https://hrmerrill.github.io/explore-mofc-financials/" target="_blank" rel="noopener noreferrer"
+          class="info-card info-card-link-card">
+          <div class="info-card-icon"><i class="fa fa-bar-chart"></i></div>
+          <div class="info-card-body">
+            <div class="info-card-title">MOFC Financials <i class="fa fa-external-link link-icon"></i></div>
+            <div class="info-card-meta">Analytics · Dashboard</div>
+            <p class="info-card-desc"> Visualization of publicly available financial data from the Mid-Ohio Food
+              Collective.</p>
+          </div>
+        </a>
+
       </div>
-      <div class="edu-entry">
-        <div class="edu-left">
-          <span class="edu-degree">BS, Mathematics</span>
-          <span class="edu-school">Mississippi State University</span>
-        </div>
-        <span class="edu-year">2008 – 2012</span>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa fa-graduation-cap"></i>Education</h2>
+        <div class="section-line"></div>
       </div>
-    </div>
-  </section>
+      <div class="edu-list">
+        <div class="edu-entry">
+          <div class="edu-left">
+            <span class="edu-degree">PhD, Agricultural and Biological Engineering</span>
+            <span class="edu-school">University of Florida</span>
+          </div>
+          <span class="edu-year">2014 – 2018</span>
+        </div>
+        <div class="edu-entry">
+          <div class="edu-left">
+            <span class="edu-degree">MStat, Statistics</span>
+            <span class="edu-school">University of Florida</span>
+          </div>
+          <span class="edu-year">2012 – 2014</span>
+        </div>
+        <div class="edu-entry">
+          <div class="edu-left">
+            <span class="edu-degree">BS, Mathematics</span>
+            <span class="edu-school">Mississippi State University</span>
+          </div>
+          <span class="edu-year">2008 – 2012</span>
+        </div>
+      </div>
+    </section>
 
-</main>
+  </main>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <p>Find me on <a href="https://www.linkedin.com/in/hunter-r-merrill-phd-3996b639/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · Last updated Dec 2025</p>
-</footer>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Find me on <a href="https://www.linkedin.com/in/hunter-r-merrill-phd-3996b639/" target="_blank"
+        rel="noopener noreferrer">LinkedIn</a> · Last updated May 2026</p>
+  </footer>
 
-<script type="module" src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
+
 </html>

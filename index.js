@@ -1,18 +1,18 @@
 // ===== Role Switcher =====
 const heroTitleEl = document.getElementById('hero-title');
-const bioTextEl   = document.getElementById('bio-text');
+const bioTextEl = document.getElementById('bio-text');
 
-const originalHeroTitle = 'Principal Data Scientist | Program Lead';
-const originalBioText   = bioTextEl ? bioTextEl.innerHTML : '';
+const originalHeroTitle = 'Data Scientist | ML Engineer | Program Lead';
+const originalBioText = bioTextEl ? bioTextEl.innerHTML : '';
 
 const roleConfig = {
   ds: {
     title: 'Data Scientist',
-    bio: 'Outcome-driven <strong>Data Scientist</strong> with 8+ years applying advanced probabilistic and deep learning methods to high-impact problems in agriculture and global health. Expert in Bayesian modeling, uncertainty quantification, and probabilistic forecasting. Author of multiple <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer">peer-reviewed publications</a> and <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer">patents</a>.',
+    bio: 'Outcome-driven <strong>Data Scientist</strong> with 9+ years applying advanced probabilistic and deep learning methods to high-impact problems in agriculture and global health. Expert in Bayesian modeling, uncertainty quantification, and probabilistic forecasting. Author of multiple <a href="https://scholar.google.com/citations?user=Tpw16M0AAAAJ" target="_blank" rel="noopener noreferrer">peer-reviewed publications</a> and <a href="https://patents.google.com/?inventor=Hunter+Merrill" target="_blank" rel="noopener noreferrer">patents</a>.',
   },
-  eng: {
-    title: 'ML Engineer | Full-Stack Developer',
-    bio: 'Outcome-driven <strong>ML Engineer</strong> with end-to-end experience building and deploying production ML systems — from model development to cloud infrastructure (AWS, GCP, DigitalOcean), CI/CD pipelines, Docker containerization, and large-scale data processing with Apache Spark. Delivered real-world systems for agriculture and global health.',
+  mle: {
+    title: 'Machine Learning Engineer',
+    bio: 'Outcome-driven <strong>ML Engineer</strong> with end-to-end experience building and deploying production ML systems — from large-scale data processing and model development to cloud infrastructure (AWS, GCP, DigitalOcean), CI/CD pipelines, Docker containerization, and mobile app development with edge inference. Delivered real-world systems for agriculture and global health.',
   },
   lead: {
     title: 'Technical Program Lead',
@@ -35,19 +35,21 @@ function setRole(role) {
   // Swap hero bio
   if (role !== 'all' && roleConfig[role]) {
     heroTitleEl.textContent = roleConfig[role].title;
-    bioTextEl.innerHTML     = roleConfig[role].bio;
+    bioTextEl.innerHTML = roleConfig[role].bio;
   } else {
     heroTitleEl.textContent = originalHeroTitle;
-    bioTextEl.innerHTML     = originalBioText;
+    bioTextEl.innerHTML = originalBioText;
   }
 
-  // Dim bullets that don't match this role
+  // Dim or omit bullets that don't match this role
   document.querySelectorAll('li[data-roles]').forEach(li => {
     if (role === 'all') {
       li.classList.remove('role-dimmed');
+      li.classList.remove('role-omitted');  // comment out to only dim
     } else {
       const roles = li.dataset.roles.split(' ');
       li.classList.toggle('role-dimmed', !roles.includes(role));
+      li.classList.toggle('role-omitted', !roles.includes(role));  // comment out to only dim
     }
   });
 
@@ -76,8 +78,8 @@ function toggleEntry(btn) {
 window.toggleEntry = toggleEntry;
 
 // ===== Active Nav Link on Scroll =====
-const sections  = document.querySelectorAll('main section[id]');
-const navLinks  = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
 
 const navObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -108,7 +110,7 @@ document.querySelectorAll('.tl-card, .skill-card, .info-card, .edu-entry').forEa
 
 // ===== Apply ?role= query param on load =====
 document.addEventListener('DOMContentLoaded', () => {
-  const params      = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
   const initialRole = params.get('role');
   if (initialRole && roleConfig[initialRole]) {
     setRole(initialRole);
